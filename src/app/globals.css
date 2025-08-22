@@ -1,26 +1,178 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  @apply bg-white text-black;
+  font-family: var(--font-sans);
+  font-family: var(--font-poppins);
+  
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.custom-arrow {
+  @apply absolute top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full w-10 h-10 flex items-center justify-center shadow cursor-pointer;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.custom-arrow::after {
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.swiper-button-prev-custom::after {
+  transform: rotate(-135deg);
+}
+
+.swiper-button-next-custom::after {
+  transform: rotate(45deg);
+}
+
+.main-bg {
+  @apply bg-[#28C76F];
+}
+
+.main-text {
+  @apply bg-[#28C76F];
+}
+
+/* In styles/globals.css */
+.shadow-white-bottom {
+  box-shadow: 0px 40px 60px -10px rgba(255, 255, 255, 0.8);
+}
+
+.black-main {
+  @apply text-[#333333];
+}
+
+.para-main {
+  @apply text-[#777777];
+}
+
+.bg-black-button {
+  @apply bg-[#333333];
+}
+
+@theme {
+  --color-primary: #28C76F;
+  --color-subtitle: #777;
+  --color-secondary: #333;
+  --color-card: #f8f8f8;
+  --color-warning: #FF4C4C;
+  --color-success: #00a63d;
+  --color-info: #a2f026;
+}
+
+.container {
+  max-width: 1420px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (min-width: 768px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+.section-gap {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  /* sm */
+  .section-gap {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  /* md */
+  .section-gap {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* lg */
+  .section-gap {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  /* xl */
+  .section-gap {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (min-width: 1536px) {
+  /* 2xl */
+  .section-gap {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+body .skiptranslate {
+  display: none !important;
+    position: absolute;
+}
+ 
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+    position: absolute;
+}
+ 
+.VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate {
+  visibility: hidden !important;
+  height: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+  position: absolute;
+}
+
+section[aria-live="polite"] {
+  display: none !important;
+    position: absolute;
+}
+body element.style{
+  top: 0px !important;;
 }
