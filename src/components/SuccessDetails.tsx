@@ -42,7 +42,7 @@ export default function  SuccessDetails() {
           <div className=" border-gray-200">
             <h2 className="text-lg font-medium mb-3">Next Step</h2>
             <p className="text-gray-600 text-sm mb-4">Create AI Pow</p>
-            <button className="w-full bg-primary border-none hover:bg-green-700 text-white py-2 px-4 rounded-md transition flex items-center justify-center">
+            <button className="w-full bg-primary border-none hover:bg-blue-700 text-white py-2 px-4 rounded-md transition flex items-center justify-center">
               Create Company Profile
               <BiRightArrowAlt className="size-6" />
             </button>

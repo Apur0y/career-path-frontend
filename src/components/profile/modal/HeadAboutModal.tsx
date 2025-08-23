@@ -214,7 +214,7 @@ const HeadAboutModal = ({
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-primary text-white rounded hover:bg-green-800"
+                  className="px-4 py-2 bg-primary text-white rounded hover:bg-blue-800"
                 >
                   Save
                 </button>

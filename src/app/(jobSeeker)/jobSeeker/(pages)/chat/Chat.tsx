@@ -529,7 +529,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
                     className="w-10 h-10 rounded-full object-cover bg-teal-700"
                   />
                   {user.isOnline ? (
-                    <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
+                    <div className="absolute bottom-0 right-0 w-3 h-3 bg-blue-500 rounded-full border-2 border-white" />
                   ) : (
                     <div className="absolute bottom-0 right-0 w-3 h-3 bg-gray-500 rounded-full border-2 border-white" />
                   )}
@@ -567,7 +567,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
                     className="w-10 h-10 rounded-full object-cover bg-teal-700"
                   />
                   {selectedChat.isOnline ? (
-                    <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
+                    <div className="absolute bottom-0 right-0 w-3 h-3 bg-blue-500 rounded-full border-2 border-white" />
                   ) : (
                     <div className="absolute bottom-0 right-0 w-3 h-3 bg-gray-400 rounded-full border-2 border-white" />
                   )}
@@ -624,7 +624,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
                       )}
                       <div
                         className={`px-4 py-2 rounded-2xl text-sm ${msg.senderId === userId
-                          ? "bg-green-500 text-white"
+                          ? "bg-blue-500 text-white"
                           : "bg-white text-gray-800 border border-gray-200 shadow-sm"
                           }`}
                       >
@@ -652,12 +652,12 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
                   onChange={handleInputChange}
                   onKeyPress={handleKeyPress}
                   placeholder="Type a message..."
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <button
                   onClick={handleSendMessage}
                   disabled={!newMessage.trim()}
-                  className="w-12 h-12 bg-green-500 hover:bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed rounded-full flex items-center justify-center transition-colors"
+                  className="w-12 h-12 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed rounded-full flex items-center justify-center transition-colors"
                 >
                   <svg
                     className="w-5 h-5 text-white"

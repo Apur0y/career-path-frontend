@@ -51,7 +51,7 @@ export default function page() {
             </p>
             <button
               onClick={handleContinue}
-              className="w-full mt-20 bg-primary border-none hover:bg-green-700 text-white py-2 px-4 rounded-md transition flex items-center justify-center"
+              className="w-full mt-20 bg-primary border-none hover:bg-blue-700 text-white py-2 px-4 rounded-md transition flex items-center justify-center"
             >
               {userRole ? "Continue to Dashboard" : "Please Log in"}
               <BiRightArrowAlt className="size-6" />

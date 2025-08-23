@@ -178,7 +178,7 @@ function PaymentForm({
               <button
                 type="submit"
                 disabled={!stripe || paymentProcessing}
-                className="w-full bg-primary cursor-pointer hover:bg-green-8 disabled:bg-gray-400 text-white font-medium py-3 px-4 rounded-md transition-colors duration-200 mt-6"
+                className="w-full bg-primary cursor-pointer hover:bg-blue-8 disabled:bg-gray-400 text-white font-medium py-3 px-4 rounded-md transition-colors duration-200 mt-6"
               >
                 {paymentProcessing ? "Processing..." : `Pay`}
               </button>

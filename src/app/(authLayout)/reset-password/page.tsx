@@ -141,7 +141,7 @@ const ResetPasswordForm: React.FC = () => {
 
           <button
             type="submit"
-            className="w-full cursor-pointer text-base font-medium bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition"
+            className="w-full cursor-pointer text-base font-medium bg-primary text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition"
           >
             {isLoading ? (
               <>

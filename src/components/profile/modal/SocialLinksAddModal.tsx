@@ -76,7 +76,7 @@ const SocialLinksAddModal: React.FC<SocailContactModal> = ({
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-primary text-white rounded hover:bg-green-600"
+                  className="px-4 py-2 bg-primary text-white rounded hover:bg-blue-600"
                 >
                   Save
                 </button>

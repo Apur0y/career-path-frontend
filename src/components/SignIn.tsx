@@ -193,7 +193,7 @@ export default function SignInForm() {
             onClick={() => {
               setModalOpen(false);
             }}
-            className="text-primary hover:text-green-800 text-sm font-medium cursor-pointer"
+            className="text-primary hover:text-blue-800 text-sm font-medium cursor-pointer"
           >
             Forgot Password?
           </button>
@@ -230,7 +230,7 @@ export default function SignInForm() {
 
       <p className="mt-6 text-center text-gray-600 text-sm">
         Don't have an account?{' '}
-        <Link href="/signUp" className="text-primary hover:text-green-800 font-semibold">
+        <Link href="/signUp" className="text-primary hover:text-blue-800 font-semibold">
           Sign up
         </Link>
       </p>

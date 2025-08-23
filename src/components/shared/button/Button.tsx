@@ -20,7 +20,7 @@ export default function Button({
   return (
     <button
       type={type}
-      className={`${className} bg-primary text-white cursor-pointer hover:bg-green-600 transition`}
+      className={`${className} bg-primary text-white cursor-pointer hover:bg-blue-600 transition`}
       onClick={onClick}
       disabled={disabled}
       {...props}

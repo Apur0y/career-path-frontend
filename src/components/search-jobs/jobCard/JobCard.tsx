@@ -88,7 +88,7 @@ export default function JobCard({ job }: { job: Job }) {
                             {job?.salaryRange} <span className="text-sm font-normal text-gray-500">/month</span>
                         </div>
                         <Link href={`/jobSeeker/job-details/${job.id}`}>
-                            <button className="text-primary underline transition-colors cursor-pointer hover:text-green-600">
+                            <button className="text-primary underline transition-colors cursor-pointer hover:text-blue-600">
                                 View Details
                             </button>
                         </Link>
@@ -151,7 +151,7 @@ export default function JobCard({ job }: { job: Job }) {
                                 {job?.salaryRange} <span className="text-sm font-normal text-gray-500">/month</span>
                             </div>
                             <Link href={`/jobSeeker/job-details/${job.id}`}>
-                                <button className="text-primary underline transition-colors cursor-pointer hover:text-green-600">
+                                <button className="text-primary underline transition-colors cursor-pointer hover:text-blue-600">
                                     View Details
                                 </button>
                             </Link>

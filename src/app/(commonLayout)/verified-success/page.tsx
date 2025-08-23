@@ -33,7 +33,7 @@ const VerifidSuccess: React.FC = () => {
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
           <Link
             href={"/"}
-            className="px-12 py-2 rounded-lg text-sm sm:text-base font-medium text-white bg-primary hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
+            className="px-12 py-2 rounded-lg text-sm sm:text-base font-medium text-white bg-primary hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
           >
             Ok
           </Link>

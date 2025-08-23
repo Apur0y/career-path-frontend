@@ -55,7 +55,7 @@ export default function NotFound() {
                                 transition={{ duration: 0.5 }}
                             >
                                 <svg
-                                    className="mx-auto h-24 w-24 text-green-600"
+                                    className="mx-auto h-24 w-24 text-blue-600"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
@@ -70,7 +70,7 @@ export default function NotFound() {
                                 </svg>
                             </motion.div>
                             <h1 className="mt-6 text-6xl font-extrabold text-gray-900">
-                                4<span className="text-green-600">0</span>4
+                                4<span className="text-blue-600">0</span>4
                             </h1>
                             <h2 className="mt-4 text-3xl font-medium text-gray-800">Page Not Found</h2>
                             <p className="mt-4 text-lg text-gray-600">
@@ -97,10 +97,10 @@ export default function NotFound() {
                                         >
                                             <a
                                                 href={link.href}
-                                                className="flex items-center px-4 py-3 border border-gray-200 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600 transition-colors"
+                                                className="flex items-center px-4 py-3 border border-gray-200 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors"
                                             >
                                                 <svg
-                                                    className="mr-3 h-5 w-5 text-green-500"
+                                                    className="mr-3 h-5 w-5 text-blue-500"
                                                     fill="none"
                                                     stroke="currentColor"
                                                     viewBox="0 0 24 24"
@@ -123,7 +123,7 @@ export default function NotFound() {
                             <div className="mt-8 text-center">
                                 <a
                                     href="/"
-                                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors"
+                                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                                 >
                                     <svg
                                         className="-ml-1 mr-3 h-5 w-5"

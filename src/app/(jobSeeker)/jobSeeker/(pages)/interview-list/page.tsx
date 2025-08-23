@@ -47,9 +47,9 @@ const aiLogData = [
 
 const StatusBadge = ({ status }: { status: string }) => {
   const isSuccess = status === 'Success';
-  const bg = isSuccess ? 'bg-green-100' : 'bg-red-100';
-  const text = isSuccess ? 'text-green-800' : 'text-red-800';
-  const border = isSuccess ? 'border-green-200' : 'border-red-200';
+  const bg = isSuccess ? 'bg-blue-100' : 'bg-red-100';
+  const text = isSuccess ? 'text-blue-800' : 'text-red-800';
+  const border = isSuccess ? 'border-blue-200' : 'border-red-200';
 
   return (
     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${bg} ${text} ${border} border`}>
@@ -180,7 +180,7 @@ export default function InterviewSheduler() {
                             <Link2Icon />Interview link
                           </Link>
                         </div>
-                        <div className="col-span-2  underline text-primary cursor-pointer hover:text-green-700 transition">
+                        <div className="col-span-2  underline text-primary cursor-pointer hover:text-blue-700 transition">
                           <Link href={`/jobSeeker/chat/${row.jobOwnerId}`}>
                             Chat Now
                           </Link>

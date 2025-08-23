@@ -298,7 +298,7 @@ export const FilterSidebar = ({ setFiltersData, isFilterSidebarVisible, setIsFil
   }, [selectedWorkModes, selectedDepartments, selectedCompanies, selectedEducations, selectedSalaries, experience, searchFilters, selectedLocations])
 
   return (
-    <div className="md:w-[337px] h-[600px] lg:h-max overflow-auto lg:bg-white p-6 border border-gray-200 ml-3 2xl:ml-0 shadow-lg rounded-lg lg:rounded-none bg-green-50 relative z-50">
+    <div className="md:w-[337px] h-[600px] lg:h-max overflow-auto lg:bg-white p-6 border border-gray-200 ml-3 2xl:ml-0 shadow-lg rounded-lg lg:rounded-none bg-blue-50 relative z-50">
       <h2 className="text-lg font-semibold mb-6">All Filters</h2>
 
       {/* Work Mode Filter */}
@@ -501,7 +501,7 @@ export const FilterSidebar = ({ setFiltersData, isFilterSidebarVisible, setIsFil
       {/* <div className="flex justify-end">
         <button
           onClick={handleApply}
-          className="px-3 py-1 border border-gray-200 rounded-md shadow-md bg-primary text-white hover:bg-green-600 cursor-pointer transition-all duration-300"
+          className="px-3 py-1 border border-gray-200 rounded-md shadow-md bg-primary text-white hover:bg-blue-600 cursor-pointer transition-all duration-300"
           disabled={isFetching}
         >
           {isFetching ? "Applying..." : "Apply"}

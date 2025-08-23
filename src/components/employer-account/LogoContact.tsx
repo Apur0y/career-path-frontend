@@ -196,7 +196,7 @@ function LogoContact() {
                             </label>
                             <div
                                 className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors ${isDragOver
-                                    ? 'border-green-400 bg-green-50'
+                                    ? 'border-blue-400 bg-blue-50'
                                     : 'border-gray-200 hover:border-gray-300 transition-all duration-300'
                                     }`}
                                 onDrop={handleDrop}
@@ -231,8 +231,8 @@ function LogoContact() {
                                     />
                                 </div>
                                 {localFormData.logo && (
-                                    <div className="absolute inset-0 bg-green-50 border-2 border-green-300 rounded-lg flex items-center justify-center">
-                                        <p className="text-green-700 font-medium">
+                                    <div className="absolute inset-0 bg-blue-50 border-2 border-blue-300 rounded-lg flex items-center justify-center">
+                                        <p className="text-blue-700 font-medium">
                                             {localFormData.logo.name}
                                         </p>
                                     </div>
@@ -307,7 +307,7 @@ function LogoContact() {
                         <button
                             type="button"
                             onClick={handleSubmit}
-                            className="w-full bg-primary hover:bg-green-600 text-white font-medium py-4 cursor-pointer px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2 group"
+                            className="w-full bg-primary hover:bg-blue-600 text-white font-medium py-4 cursor-pointer px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2 group"
                         >
                             <span>Next</span>
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

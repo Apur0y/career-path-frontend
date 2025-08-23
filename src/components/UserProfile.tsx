@@ -220,19 +220,13 @@ export default function UserProfileCard() {
                 <button
                   onClick={handleSave}
                   disabled={isLoading}
-                  className="bg-primary text-white px-6 py-3 rounded-sm hover:bg-green-600 flex items-center gap-2 disabled:bg-green-300 cursor-pointer transition"
+                  className="bg-primary text-white px-6 py-3 rounded-sm hover:bg-blue-600 flex items-center gap-2 disabled:bg-blue-300 cursor-pointer transition"
                 >
                   {isLoading ? "Saving..." : <><FiCheck /> Save</>}
                 </button>
               </>
             )}
-            {
-              user?.role ==="EMPLOYEE"? <Link href={"http://172.252.13.69:1004/"} className="border border-gray-300 text-gray-600 px-8 py-3 rounded-sm hover:bg-gray-100 transition-colors font-medium cursor-pointer">
-              Go to Dashboard
-            </Link>:<Link href={"http://172.252.13.69:1001/"} className="border border-gray-300 text-gray-600 px-8 py-3 rounded-sm hover:bg-gray-100 transition-colors font-medium cursor-pointer">
-              Go to Dashboard
-            </Link>
-            }
+           <Link href={"#"}>Go To Dashboard</Link>
             
           </div>
         </div>

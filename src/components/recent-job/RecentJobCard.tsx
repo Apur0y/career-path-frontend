@@ -58,7 +58,7 @@ export default function RecentJobCard({ job }: RecentJobCardProps) {
 
         {/* Conditional Action Button or Text */}
         {pathname.includes("/jobSeeker/job-details") ? (
-          <p className="text-primary text-xs font-medium underline hover:text-green-700 cursor-pointer transition-colors">
+          <p className="text-primary text-xs font-medium underline hover:text-blue-700 cursor-pointer transition-colors">
             View Details
           </p>
         ) : (

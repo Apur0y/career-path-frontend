@@ -311,7 +311,7 @@ function AboutCompany() {
                         <button
                             type="button"
                             onClick={handleSubmit}
-                            className="w-full bg-primary hover:bg-green-600 text-white font-medium py-4 cursor-pointer px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2 group"
+                            className="w-full bg-primary hover:bg-blue-600 text-white font-medium py-4 cursor-pointer px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2 group"
                         >
                             <span>Next</span>
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

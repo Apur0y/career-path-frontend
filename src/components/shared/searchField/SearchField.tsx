@@ -317,7 +317,7 @@ export default function SearchField({ setAnimate, animate }: any) {
       )}
 
       {showResults && suggestions.length > 0 && (
-        <div className="absolute top-28 bg-white shadow-lg rounded-lg w-full max-h-64 overflow-auto z-10 border border-gray-300">
+        <div className="absolute top-20 bg-white shadow-lg rounded-lg w-full max-h-64 overflow-auto z-10 border border-gray-300">
           <div className="py-2">
             <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b">
               {activeInput === 'jobName' ? 'Keywords' : 'Locations'}

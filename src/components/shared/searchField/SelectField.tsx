@@ -1,8 +1,7 @@
 import React from "react";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md"; // Import the arrow icon
+import { MdOutlineKeyboardArrowDown } from "react-icons/md"; 
 
 type Option = { value: string; label?: string };
-
 type SelectFieldProps = {
   label: string;
   name: string;
@@ -41,9 +40,8 @@ const SelectField: React.FC<SelectFieldProps> = ({
         ))}
       </select>
 
-      {/* Add the dropdown icon */}
-      <MdOutlineKeyboardArrowDown className="w-5 h-5 text-gray-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none mt-4" />
 
+      <MdOutlineKeyboardArrowDown className="w-5 h-5 text-gray-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none mt-4" />
       {error && <span className="text-red-500 text-sm">{error}</span>}
     </div>
   );

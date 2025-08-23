@@ -218,7 +218,7 @@ export default function SkillsExperience({ setStep, formData, setFormData }: IPe
                   <button
                     type="button"
                     onClick={addSkill}
-                    className="px-4 py-2 bg-primary text-white rounded-md hover:bg-green-700"
+                    className="px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-700"
                   >
                     Add
                   </button>
@@ -264,7 +264,7 @@ export default function SkillsExperience({ setStep, formData, setFormData }: IPe
                   <button
                     type="button"
                     onClick={addLanguage}
-                    className="px-4 py-2 bg-primary text-white rounded-md hover:bg-green-700"
+                    className="px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-700"
                   >
                     Add
                   </button>

@@ -28,7 +28,7 @@ export default function SearchSection({setAnimate,animate}:any) {
   const navitem= path.includes("jobSeeker")? navitem2:navitem2
   return (
     <div className="">
-      <div className="absolute -top-27 w-full">
+      <div className="absolute -top-44 w-full">
 
       <FloatNavbar navItem={navitem}/>
       </div>

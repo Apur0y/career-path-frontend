@@ -53,7 +53,7 @@ export default function CreateAccount() {
                         Follow these simple steps to set up your company profile and find the perfect  <br /> candidate for your team.
                     </p>
 
-                    <button onClick={() => handleEmployer()} className="px-18 py-4 bg-primary text-[#FCFCFC] font-semibold rounded-lg hover:bg-green-600 cursor-pointer transition">
+                    <button onClick={() => handleEmployer()} className="px-18 py-4 bg-primary text-[#FCFCFC] font-semibold rounded-lg hover:bg-blue-600 cursor-pointer transition">
                         Start Now
                     </button>
                 </div>

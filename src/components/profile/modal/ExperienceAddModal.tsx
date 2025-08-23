@@ -95,7 +95,7 @@ const ExperienceAddModal: React.FC<ExperienceAddModal> = ({
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-primary text-white rounded hover:bg-green-700"
+                  className="px-4 py-2 bg-primary text-white rounded hover:bg-blue-700"
                 >
                   Save
                 </button>

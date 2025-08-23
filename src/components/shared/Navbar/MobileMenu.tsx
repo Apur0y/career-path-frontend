@@ -130,7 +130,7 @@ const MobileMenu = ({
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                       >
-                        <LuUser className="size-9 bg-primary hover:bg-green-700 transition-all duration-300 cursor-pointer rounded-full p-2 text-white mr-2" />
+                        <LuUser className="size-9 bg-primary hover:bg-blue-700 transition-all duration-300 cursor-pointer rounded-full p-2 text-white mr-2" />
                       </motion.div>
                       <p className="font-semibold">{user?.fullName}</p>
                     </>
@@ -138,7 +138,7 @@ const MobileMenu = ({
                     <Link
                       onClick={() => setShowMenu(false)}
                       href={"/signIn"}
-                      className="w-full text-left hover:bg-green-600 bg-primary text-white rounded-md px-5 py-2 transition-all duration-200"
+                      className="w-full text-left hover:bg-blue-600 bg-primary text-white rounded-md px-5 py-2 transition-all duration-200"
                     >
                       Sign In
                     </Link>

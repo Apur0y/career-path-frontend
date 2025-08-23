@@ -53,7 +53,7 @@ const SkillsAddModal: React.FC<SkillsAddModalProps> = ({
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-primary cursor-pointer text-white rounded hover:bg-green-600"
+                  className="px-4 py-2 bg-primary cursor-pointer text-white rounded hover:bg-blue-600"
                 >
                   Save
                 </button>

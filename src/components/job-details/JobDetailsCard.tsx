@@ -117,8 +117,8 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ currentCompany }) => {
                     {currentCompany?.company?.companyName || "Superjob Technology"}</h1>
                 {
                     isSave ? <> <div className="space-y-3">
-                        <div className="inline-flex items-center gap-2 px-2 py-1 border-l-4 border-green-500 bg-green-50">
-                            <span className="text-sm font-medium text-green-700">
+                        <div className="inline-flex items-center gap-2 px-2 py-1 border-l-4 border-blue-500 bg-blue-50">
+                            <span className="text-sm font-medium text-blue-700">
                                 Saved
                             </span>
                         </div>
@@ -135,12 +135,12 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ currentCompany }) => {
                 {
                     applied ? <button
                         onClick={handleApplyJob}
-                        className="text-xs md:text-base inline-flex items-center gap-2 px-2 py-1 border-l-4 border-green-500 bg-green-50">
+                        className="text-xs md:text-base inline-flex items-center gap-2 px-2 py-1 border-l-4 border-blue-500 bg-blue-50">
                         Application Submited
                     </button> : <>{
                         loading ? <div className='bg-primary text-white  px-4 py-2 rounded'><LoadingButton /></div> : <> <button
                             onClick={handleApplyJob}
-                            className="bg-primary text-white  px-4 py-2 rounded hover:bg-green-600 transition cursor-pointer hidden lg:flex">
+                            className="bg-primary text-white  px-4 py-2 rounded hover:bg-blue-600 transition cursor-pointer hidden lg:flex">
                             Apply Now
                         </button> </>
                     } </>
@@ -216,7 +216,7 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ currentCompany }) => {
                     {
                         loading ? <div className='bg-primary text-white  px-4 py-2 rounded'><LoadingButton /></div> : <> <button
                             onClick={handleApplyJob}
-                            className="bg-primary text-white  px-4 py-2 rounded hover:bg-green-600 transition cursor-pointer">
+                            className="bg-primary text-white  px-4 py-2 rounded hover:bg-blue-600 transition cursor-pointer">
                             Apply Now
                         </button></>
                     }

@@ -16,9 +16,9 @@ interface SortConfig {
 
 const StatusBadge = ({ status }: { status: string }) => {
   const isSuccess = status === 'Success';
-  const bg = isSuccess ? 'bg-green-100' : 'bg-red-100';
-  const text = isSuccess ? 'text-green-800' : 'text-red-800';
-  const border = isSuccess ? 'border-green-200' : 'border-red-200';
+  const bg = isSuccess ? 'bg-blue-100' : 'bg-red-100';
+  const text = isSuccess ? 'text-blue-800' : 'text-red-800';
+  const border = isSuccess ? 'border-blue-200' : 'border-red-200';
 
   return (
     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${bg} ${text} ${border} border`}>
@@ -148,7 +148,7 @@ export default function AppliedJobList() {
                       <div className="col-span-1">{row?.job?.title}</div>
                       <div className="col-span-1"><StatusBadge status={row.status} /></div>
                       <Link href={`/jobSeeker/job-details/${row?.jobId}`}>
-                        <div className="col-span-1 underline text-primary hover:text-green-700 cursor-pointer">View Details</div>
+                        <div className="col-span-1 underline text-primary hover:text-blue-700 cursor-pointer">View Details</div>
                       </Link>
                     </div>
                   </div>
@@ -166,7 +166,7 @@ export default function AppliedJobList() {
                 Please check your search or create a new application
               </p>
               <Link href={"/jobSeeker/job-details/jobs"}>
-                <button className="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-green-600 transition cursor-pointer">
+                <button className="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-blue-600 transition cursor-pointer">
                   Apply for Jobs
                 </button>
               </Link>

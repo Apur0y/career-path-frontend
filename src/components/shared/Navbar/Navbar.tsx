@@ -209,7 +209,7 @@ export default function Navbar({ navItem }: NavbarProps) {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
-                    <LuUser className="size-9 bg-primary hover:bg-green-700 transition-all duration-300 cursor-pointer rounded-full p-2 text-white mr-2" />
+                    <LuUser className="size-9 bg-primary hover:bg-blue-700 transition-all duration-300 cursor-pointer rounded-full p-2 text-white mr-2" />
                   </motion.div>
                   {user?.fullName}
                 </>

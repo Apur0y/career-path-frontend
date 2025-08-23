@@ -73,7 +73,7 @@ export const SocialLinksEditModal: React.FC<SocialLinksEditModalProps> = ({
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-primary text-white rounded hover:bg-green-600 cursor-pointer "
+                  className="px-4 py-2 bg-primary text-white rounded hover:bg-blue-600 cursor-pointer "
                 >
                   Save
                 </button>
@@ -172,7 +172,7 @@ export const SocialLinksEditModal: React.FC<SocialLinksEditModalProps> = ({
 //                 </button>
 //                 <button
 //                   type="submit"
-//                   className="px-4 py-2 bg-primary text-white rounded hover:bg-green-600"
+//                   className="px-4 py-2 bg-primary text-white rounded hover:bg-blue-600"
 //                 >
 //                   Save
 //                 </button>
