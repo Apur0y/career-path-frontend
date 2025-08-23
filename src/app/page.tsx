@@ -31,7 +31,7 @@ const page = () => {
       <AboutUs></AboutUs>
       <PerfectJob></PerfectJob>
       <TopTalent></TopTalent>
-      <SuggestedCourses></SuggestedCourses>
+   
       <div className="relative">
         
       <JobSeekerPlan />

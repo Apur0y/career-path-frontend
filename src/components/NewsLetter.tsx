@@ -52,7 +52,7 @@ export default function Newsletter() {
             />
             <button
               type="submit"
-              className="cursor-pointer absolute top-1/2 right-2 transform -translate-y-1/2 bg-primary text-white text-xs md:text-base px-2 py-1 md:px-5 md:py-2 rounded-md hover:bg-green-600 transition"
+              className="cursor-pointer absolute top-1/2 right-2 transform -translate-y-1/2 bg-primary text-white text-xs md:text-base px-2 py-1 md:px-5 md:py-2 rounded-md hover:bg-blue-700 transition"
             >
               {
                 loading ? <>SUBSCRIBING...</> : <>SUBSCRIBE NOW</>

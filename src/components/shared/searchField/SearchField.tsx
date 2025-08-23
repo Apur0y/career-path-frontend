@@ -229,7 +229,7 @@ export default function SearchField({ setAnimate, animate }: any) {
 
   return (
     <div className="relative" ref={containerRef}>
-      <h1 className="text-xl text-secondary font-medium">Find Your Favorite Job</h1>
+     
       <div className="bg-white p-4 rounded-lg shadow flex flex-col 2xl:flex-row items-stretch gap-4 mt-2">
         {/* Job Name Input */}
         <div className={`flex items-center border-b px-3 py-2 flex-1 gap-2 transition-colors ${focusedInput === 'jobName' ? 'border-secondary' : 'border-gray-300'
@@ -238,7 +238,7 @@ export default function SearchField({ setAnimate, animate }: any) {
             }`} />
           <input
             type="text"
-            placeholder="Keywords, Job Title, Company"
+            placeholder="Search skills, job title, company"
             className="flex-1 bg-transparent focus:outline-none"
             {...register('jobName')}
             onFocus={() => handleInputFocus('jobName')}
@@ -265,7 +265,7 @@ export default function SearchField({ setAnimate, animate }: any) {
             }`} />
           <input
             type="text"
-            placeholder="Postcode, City, Country"
+            placeholder="Location"
             className="flex-1 bg-transparent focus:outline-none"
             {...register('location')}
             onFocus={() => handleInputFocus('location')}
@@ -305,7 +305,7 @@ export default function SearchField({ setAnimate, animate }: any) {
         </button>
       </div>
       {warning && <p className='text-red-600'>Please enter a job title or location to search.</p>}
-      <p className='md:text-[16px] text-subtitle pt-2 '>Popular : UI Designer, UX Researcher, Android, Admin</p>
+      {/* <p className='md:text-[16px] text-subtitle pt-2 '>Popular : UI Designer, UX Researcher, Android, Admin</p> */}
 
       {/* Enhanced Search Suggestions */}
       {showResults && suggestions.length === 0 && activeInput && (

@@ -23,7 +23,7 @@ export default function AboutUs() {
             {/* Left - Image */}
             <div className="w-full md:w-1/2">
               <Image
-                src="/about.png" // Replace with your image path
+                src="/about.jpg" // Replace with your image path
                 alt="About Us"
                 className="w-full rounded-lg  object-cover"
                 height={793}

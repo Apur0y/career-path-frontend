@@ -1,3 +1,4 @@
+import { GiCheckMark } from "react-icons/gi";
 
 
 interface PackageCardProps {
@@ -59,23 +60,7 @@ export default function PackageCard({
           </p>
           {permissions?.map((permission, index) => (
             <li key={index} className="flex items-start gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="21"
-                viewBox="0 0 24 25"
-                fill="none"
-                className="flex-shrink-0 mt-0.5"
-              >
-                <path
-                  d="M9.62388 22.029C14.1234 22.029 17.771 18.3814 17.771 13.8819C17.771 9.38243 14.1234 5.73486 9.62388 5.73486C5.12438 5.73486 1.47681 9.38243 1.47681 13.8819C1.47681 18.3814 5.12438 22.029 9.62388 22.029Z"
-                  fill="#B0EF8F"
-                />
-                <path
-                  d="M9.71605 20.1789L9.61271 20.0028C8.03425 17.3134 3.83969 11.6061 3.79732 11.5488L3.73682 11.4666L5.16588 10.0543L9.68951 13.213C12.5377 9.51708 15.1949 6.97853 16.9281 5.49611C18.8242 3.8745 20.0584 3.12796 20.0708 3.1208L20.0989 3.104H22.523L22.2914 3.31022C16.3363 8.6145 9.88146 19.8882 9.81717 20.0015L9.71605 20.1789Z"
-                  fill="#009045"
-                />
-              </svg>
+              <GiCheckMark />
               <span className="text-xs sm:text-sm leading-tight">
                 {permission}
               </span>

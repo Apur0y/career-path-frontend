@@ -12,7 +12,7 @@ export default function PerfectJob() {
       <Container>
         <div className="relative z-20">
           <InfoSection
-            imageUrl="/perfectJob.jpeg"
+            imageUrl="/perfectJob.jpg"
             title="Ready to"
             title2={
               <>

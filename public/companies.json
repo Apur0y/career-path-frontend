@@ -1,0 +1,51 @@
+[
+    {
+        "icnos": "/company1.png",
+        "name": "BLUE Technology",
+        "position": "Full Stack Developer",
+        "location": "Dhaka, Bangladesh",
+        "salary": " $4500"
+    },
+    {
+        "icnos": "",
+        "name": "SM Technology",
+        "position": "Full Stack Developer",
+        "location": "Dhaka, Bangladesh",
+        "salary": " $4500"
+    },
+    {
+        "icnos": "",
+        "name": "Spark Tech",
+        "position": "Full Stack Developer",
+        "location": "Dhaka, Bangladesh",
+        "salary": "$4500"
+    },
+    {
+        "icnos": "",
+        "name": "Betopie Company Ltd.",
+        "position": "Full Stack Developer",
+        "location": "Dhaka, Bangladesh",
+        "salary": "$4500"
+    },
+    {
+        "icnos": "",
+        "name": "BLUE Technology",
+        "position": "Full Stack Developer",
+        "location": "Dhaka, Bangladesh",
+        "salary": "$4500"
+    },
+    {
+        "icnos": "",
+        "name": "BLUE Technology",
+        "position": "Full Stack Developer",
+        "location": "Dhaka, Bangladesh",
+        "salary": "$4500"
+    },
+    {
+        "icnos": "",
+        "name": "BLUE Technology",
+        "position": "Full Stack Developer",
+        "location": "Dhaka, Bangladesh",
+        "salary": "$4500"
+    }
+]

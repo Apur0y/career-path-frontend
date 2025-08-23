@@ -91,8 +91,8 @@ export default function RecentJob({ title }: JobTitle) {
 
   return (
     <div className="bg-card">
-      <div className=" ml-0 2xl:ml-44 ">
-        <div className="section-gap px-2 relative py-15  px-11 xl:px-15">
+      <div className=" ml-0  ">
+        <div className="section-gap px-2 relative py-15 xl:px-15">
           <h1 className="text-2xl md:text-5xl font-semibold mb-6">
             {title || "Recent Jobs"}
           </h1>

@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 export const baseUrlApi = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://31.97.216.98:5000/api/v1",
+    baseUrl: `${process.env.NEXT_PUBLIC_SERVER_BASE_URLS}/api/v1`,
     credentials:"include",
     prepareHeaders: (headers) => {
 
