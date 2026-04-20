@@ -21,6 +21,7 @@ export default function JobDetailspage() {
   const [newJobs, setJobs] = useState<any>([]);
 
   const { id } = useParams();
+  console.log("Check cirrent compajnt",currentCompany);
 
   const [allJobs, setAllJobs] = useState<Job[]>([]);
   const { data: jobs, isLoading: isAllJobsLoading } = useGetAllJobPostsQuery({
@@ -58,6 +59,8 @@ export default function JobDetailspage() {
           company: {
             companyName: job.company_name // fallback (API doesn’t provide logo)
           },
+          description: job.description,
+url: job.url,
 
           salaryRange: "Negotiable", // API doesn't provide salary
           type: job.job_types?.[0] || "N/A",
@@ -70,7 +73,8 @@ export default function JobDetailspage() {
       });
   }, []);
 
-  const mergedJobs=[...newJobs, ...allJobs]
+  const mergedJobs=[...newJobs, ...allJobs];
+  const currentJob = mergedJobs.find((item) => item.id === id);
 
   if (isLoading || isAllJobsLoading) {
     return (

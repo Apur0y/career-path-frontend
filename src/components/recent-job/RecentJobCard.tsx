@@ -10,7 +10,7 @@ interface RecentJobCardProps {
 }
 
 export default function RecentJobCard({ job }: RecentJobCardProps) {
-  console.log(job);
+
   const pathname = usePathname();
 
   const formatSalary = (salary: string) => {
