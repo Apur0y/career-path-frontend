@@ -1,33 +1,43 @@
+"use client"
 import { Job } from "@/types/AllTypes";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 
 interface RecentJobCardProps {
-  job: Job;
+  job: any;
 }
 
 export default function RecentJobCard({ job }: RecentJobCardProps) {
+  console.log(job);
   const pathname = usePathname();
 
-  // Optional: Format salary (e.g., add K, M suffixes)
   const formatSalary = (salary: string) => {
     return salary.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
+  const [imgSrc, setImgSrc] = useState(
+    job?.company?.logo ||
+      `https://ui-avatars.com/api/?name=${job?.company?.companyName}`,
+  );
 
   return (
     // <Link href={`/jobSeeker/job-details/${job?.id}`}>
-    
+
     <div className="w-full max-w-[457px] border border-gray-100 rounded-lg shadow-sm p-4 bg-white transition-shadow duration-300 hover:shadow-md">
       {/* Company Info */}
       <div className="flex items-center gap-3">
         <Image
-          src={job?.company?.logo || "/company1.png"}
+          src={imgSrc}
           alt={job?.company?.companyName || "Company"}
           width={48}
           height={48}
           className="rounded-full object-cover"
+          onError={() =>
+            setImgSrc(
+              `https://ui-avatars.com/api/?name=${job?.company?.companyName}`,
+            )
+          }
         />
         <div>
           <h3 className="text-sm md:text-base lg:text-xl font-semibold text-gray-900">
