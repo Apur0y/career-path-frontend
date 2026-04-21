@@ -115,19 +115,151 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ currentCompany }) => {
   console.log(applied);
 
   return currentCompany?.url ? (
-    <>
-      <p>
-        <h1 className="text-2xl md:text-4xl xl:text-5xl font-bold  flex items-center gap-3">
-          {currentCompany?.company?.companyName || "Superjob Technology"}
-        </h1>
-        <div
-          className="text-gray-700 space-y-3"
-          dangerouslySetInnerHTML={{
-            __html: currentCompany?.description || "",
-          }}
-        />
-      </p>
-    </>
+   <>
+  {/* Company Name */}
+  <h1 className="text-2xl md:text-4xl xl:text-5xl font-bold flex items-center gap-3">
+    {currentCompany?.company?.companyName || "Superjob Technology"}
+  </h1>
+
+  {/* Job Title + Type */}
+  <h2 className="text-xl md:text-3xl xl:text-[42px] mt-4">
+    {currentCompany?.title || "Job Title Not Available"}{" "}
+    <span className="text-primary text-lg md:text-2xl">
+      ({currentCompany?.jobType || "N/A"})
+    </span>
+  </h2>
+
+  {/* Meta Info */}
+  <div className="text-sm text-subtitle flex flex-wrap gap-3 mt-3">
+    <span>📍 {currentCompany?.location || "Remote"}</span>
+    <span>| 💼 {currentCompany?.experience || "Not specified"}</span>
+    <span>
+      | ⏱{" "}
+      {currentCompany?.createdAt
+        ? formatDistanceToNow(new Date(currentCompany.createdAt), {
+            addSuffix: true,
+          })
+        : "Recently posted"}
+    </span>
+  </div>
+
+  {/* Salary */}
+  <p className="text-xl py-4 border-b border-gray-200">
+    <span className="text-2xl md:text-4xl font-bold text-primary">
+      {currentCompany?.salaryRange || "Negotiable"}
+    </span>
+    / Month
+  </p>
+
+  {/* Skills */}
+  <div className="mt-4">
+    <p className="font-medium mb-1">Skills Needed:</p>
+    <div className="flex flex-wrap gap-2 text-sm text-subtitle">
+      {currentCompany?.skills?.length ? (
+        currentCompany.skills.map((skill: string, i: number) => (
+          <span key={i} className="bg-gray-100 px-2 py-1 rounded">
+            {skill}
+          </span>
+        ))
+      ) : (
+        <span className="text-gray-400">Not specified (Check the Job Description)</span>
+      )}
+    </div>
+  </div>
+
+  {/* Description */}
+  <section className="mt-6">
+    <h3 className="text-lg md:text-[28px] font-semibold mb-2">
+      Job Description
+    </h3>
+    {currentCompany?.description ? (
+       <div
+      className="
+        prose prose-sm md:prose-base max-w-none
+        prose-h2:text-xl prose-h2:font-semibold prose-h2:text-gray-900 prose-h2:mt-6
+        prose-p:text-gray-700 prose-p:leading-relaxed
+        prose-ul:list-disc prose-ul:pl-5
+        prose-li:mb-2
+        prose-strong:text-gray-900
+        prose-a:text-primary 
+      "
+      dangerouslySetInnerHTML={{
+        __html: currentCompany?.description || "",
+      }}
+    />
+    ) : (
+      <p className="text-gray-400">No description available</p>
+    )}
+  </section>
+
+  {/* Responsibilities */}
+  <section className="mt-6">
+    <h3 className="text-lg md:text-[28px] font-semibold mb-2">
+      Responsibilities
+    </h3>
+    <ul className="list-disc list-inside text-gray-700">
+      {currentCompany?.features
+        ?.find((f: any) => f.featureTitle === "Responsibilities")
+        ?.point?.length ? (
+        currentCompany.features
+          .find((f: any) => f.featureTitle === "Responsibilities")
+          .point.map((p: string, i: number) => <li key={i}>{p}</li>)
+      ) : (
+        <li className="text-gray-400">Not specified</li>
+      )}
+    </ul>
+  </section>
+
+  {/* Requirements */}
+  <section className="mt-6">
+    <h3 className="text-lg md:text-[28px] font-semibold mb-2">
+      Requirements
+    </h3>
+    <ul className="list-disc list-inside text-gray-700">
+      {currentCompany?.features
+        ?.find((f: any) => f.featureTitle === "Requirements:")
+        ?.point?.length ? (
+        currentCompany.features
+          .find((f: any) => f.featureTitle === "Requirements:")
+          .point.map((p: string, i: number) => <li key={i}>{p}</li>)
+      ) : (
+        <li className="text-gray-400">Not specified</li>
+      )}
+    </ul>
+  </section>
+
+  {/* Why Join */}
+  <section className="mt-6">
+    <h3 className="text-lg md:text-[28px] font-semibold mb-2">
+      Why Join Us?
+    </h3>
+    <ul className="list-disc list-inside text-gray-700">
+      {currentCompany?.features
+        ?.find((f: any) => f.featureTitle === "Why Join Us?:")
+        ?.point?.length ? (
+        currentCompany.features
+          .find((f: any) => f.featureTitle === "Why Join Us?:")
+          .point.map((p: string, i: number) => <li key={i}>{p}</li>)
+      ) : (
+        <li className="text-gray-400">Great opportunity to grow</li>
+      )}
+    </ul>
+  </section>
+
+  {/* Apply Button */}
+  {currentCompany?.url && (
+    <div className="mt-6">
+      <a
+        href={currentCompany.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-primary text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+      >
+        Apply on Company Site
+      </a>
+    </div>
+  )}
+</>
   ) : (
     <section className="max-w-[939px] mx-auto p-6 bg-white text-secondary shadow-md rounded-lg border border-gray-100 relative">
       <Toaster />

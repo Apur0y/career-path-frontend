@@ -60,7 +60,7 @@ export default function JobDetailspage() {
             companyName: job.company_name // fallback (API doesn’t provide logo)
           },
           description: job.description,
-url: job.url,
+          url: job.url,
 
           salaryRange: "Negotiable", // API doesn't provide salary
           type: job.job_types?.[0] || "N/A",
