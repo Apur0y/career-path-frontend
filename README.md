@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CareerPath — AI Resume Builder & Job Matching Platform
 
-## Getting Started
+> ⚠️ **Disclaimer:** This is a **company internal/commercial project**. Due to confidentiality agreements, only a limited portion of the codebase and features are shared publicly in this repository — enough to give an idea of the architecture and my contributions.
+>
+> The live demo link may show **partial or limited functionality**, as several confidential/production APIs are disabled or restricted in this public-facing build and may not behave as expected.
+>
+> If you'd like to learn more about the full project, features, or my role in it, feel free to **contact me directly** — I'm happy to walk through it in detail.
 
-First, run the development server:
+---
+
+## 🧭 Overview
+
+**CareerPath** is an AI-powered platform that connects **job seekers** and **employers** through smart resume building and intelligent job matching. It provides a collaborative ecosystem with **three dedicated dashboards** — for Job Seekers, Employers, and Admins — each tailored to their specific workflows.
+
+🔗 **Live Preview:** *(link available on request / partial demo)*
+
+---
+
+## ✨ Key Features
+
+### 👤 Job Seeker Dashboard
+- AI-powered Resume Builder — generate, refine, and format professional resumes
+- AI Job Suggestions — personalized job recommendations based on profile and skills
+- Application tracking and profile management
+
+### 🏢 Employer Dashboard
+- Post and manage job listings
+- Advanced candidate filtering (skills, experience, location, etc.)
+- Review AI-matched candidate suggestions
+
+### 🛠️ Admin Dashboard
+- Platform-wide user and content management
+- Monitoring and moderation tools
+- Analytics and reporting overview
+
+### 🤖 AI Capabilities
+- AI Resume Builder for generating tailored, professional resumes
+- AI-driven Job Matching engine connecting seekers with relevant opportunities
+- Advanced filtering system for refined search results across the platform
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| Next.js | React framework (App Router) |
+| TypeScript | Type safety |
+| React | UI library |
+| Tailwind / PostCSS | Styling |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Apur0y/career-path-frontend.git
+
+# Navigate into the project directory
+cd career-path-frontend
+
+# Install dependencies
+npm install
+```
+
+### Running the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> ⚠️ Note: Since this is a partial public build, some features relying on confidential/internal APIs may not function fully in this environment.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+career-path-frontend/
+├── public/             # Static assets
+├── src/                 # Application source code
+├── next.config.ts       # Next.js configuration
+├── tsconfig.json         # TypeScript configuration
+└── postcss.config.mjs    # PostCSS configuration
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📬 Contact
 
-## Deploy on Vercel
+This repository is a partial showcase of a larger internal project. For more details, a full walkthrough, or collaboration inquiries, feel free to reach out directly.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- GitHub: [@Apur0y](https://github.com/Apur0y)
