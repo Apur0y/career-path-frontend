@@ -12,7 +12,7 @@
 
 **CareerPath** is an AI-powered platform that connects **job seekers** and **employers** through smart resume building and intelligent job matching. It provides a collaborative ecosystem with **three dedicated dashboards** — for Job Seekers, Employers, and Admins — each tailored to their specific workflows.
 
-🔗 **Live Preview:** *(link available on request / partial demo)*
+🔗 **Live Preview:** *https://career-path-pearl.vercel.app/*
 
 ---
 
