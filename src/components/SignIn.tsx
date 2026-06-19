@@ -18,6 +18,44 @@ interface FormData {
   password: string;
 }
 
+const roles = [
+  {
+    label: "Job Seeker",
+    key: "jobSeeker",
+  },
+  {
+    label: "Employer",
+    key: "employer",
+  },
+  {
+    label: "Job Seeker Dashboard",
+    key: "jobSeekerDashboard",
+  },
+  {
+    label: "Employer Dashboard",
+    key: "employerDashboard",
+  }
+];
+
+const credentials = {
+  jobSeeker: {
+    email: "aaa@gmail.com",
+    password: "000000",
+  },
+  employer: {
+    email: "eee@gmail.com",
+    password: "000000",
+  },
+  jobSeekerDashboard: {
+    email: "jsdashboard@test.com",
+    password: "123456",
+  },
+  employerDashboard: {
+    email: "edashboard@test.com",
+    password: "123456",
+  },
+};
+
 export default function SignInForm() {
   const {
     register,
@@ -32,12 +70,13 @@ export default function SignInForm() {
   const router = useRouter();
   const [sigInUser, { isLoading }] = useSignInMutation();
 
+  const [open, setOpen] = useState(false);
 
   const onSubmit = useCallback(
     async (data: FormData) => {
       try {
         const response = await sigInUser(data).unwrap();
-        console.log(response)
+        console.log(response);
         if (response?.success) {
           Cookies.set("accessToken", response.data.accessToken, {
             secure: process.env.NODE_ENV === "production",
@@ -59,7 +98,7 @@ export default function SignInForm() {
         toast.error(error.data?.message || "Login failed. Please try again.");
       }
     },
-    [sigInUser, router, reset]
+    [sigInUser, router, reset],
   );
 
   const handleGoogleSuccess = useCallback(
@@ -87,19 +126,57 @@ export default function SignInForm() {
         toast.error("Google login failed. Please try again.");
       }
     },
-    [router]
+    [router],
   );
 
   const handleGoogleError = useCallback(() => {
     toast.error("Google login failed. Please try another method.");
   }, []);
 
-  console.log(isModalOpen)
+  const loginAsRole = async (role: keyof typeof credentials) => {
+    console.log("Hus", role);
+    const user = credentials[role];
+    console.log("Gur", user);
+
+    // await sigInUser({
+    //   email: user.email,
+    //   password: user.password,
+    // });
+    try {
+      const response = await sigInUser({
+        email: user.email,
+        password: user.password,
+      }).unwrap();
+      console.log(response);
+      if (response?.success) {
+        Cookies.set("accessToken", response.data.accessToken, {
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "strict",
+          expires: 7,
+        });
+        Cookies.set("refreshToken", response.data.refreshToken, {
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "strict",
+          expires: 7,
+        });
+
+        toast.success(response.message);
+        router.push("/");
+        reset();
+      }
+    } catch (error: any) {
+      console.error("Login error:", error);
+      toast.error(error.data?.message || "Login failed. Please try again.");
+    }
+  };
+
   return (
     <section className="max-w-[1420px] mx-auto min-h-screen flex items-center justify-center px-4">
       <div className="flex w-full max-w-[1200px] bg-white rounded-xl overflow-hidden">
         {/* Image Section */}
-        <div className={`hidden md:block md:w-1/2 relative ${isModalOpen ? "" : "h-[758px]"}`}>
+        <div
+          className={`hidden md:block md:w-1/2 relative ${isModalOpen ? "" : "h-[758px]"}`}
+        >
           <Image
             src="/logingirl.jpg"
             alt="Woman using laptop"
@@ -112,136 +189,195 @@ export default function SignInForm() {
         </div>
 
         {/* Form Section */}
-        
-       <div
-  className={`w-full md:w-1/2 p-6 sm:p-8 lg:p-12 transition-all duration-500 ease-in-out ${
-    isModalOpen ? 'opacity-100 translate-x-0' : 'opacity-100 translate-x-10'
-  }`}
->
-  {isModalOpen ? (
-    <div>
-      {/* Sign-in form content */}
-      <div className="flex flex-col items-center mb-8">
-        <Link href="/" className="mb-6">
-          <Logo height={100} width={224} />
-        </Link>
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-          Welcome Back
-        </h1>
-        <p className="text-gray-600 text-sm md:text-base">
-          Sign in to access your account
-        </p>
-      </div>
 
-      {/* Sign-in form */}
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div className="space-y-1">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email Address
-          </label>
-          <input
-            id="email"
-            type="email"
-            placeholder="you@example.com"
-            className={`w-full px-4 py-[17px] border rounded-lg focus:outline-none focus:ring-2 ${
-              errors.email
-                ? 'border-red-500 focus:ring-red-200'
-                : 'border-gray-300 focus:ring-blue-200'
-            }`}
-            {...register('email', {
-              required: 'Email is required',
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Invalid email address',
-              },
-            })}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-          )}
-        </div>
-
-        <div className="space-y-1">
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            placeholder="••••••••"
-            className={`w-full px-4 py-[17px] border rounded-lg focus:outline-none focus:ring-2 ${
-              errors.password
-                ? 'border-red-500 focus:ring-red-200'
-                : 'border-gray-300 focus:ring-blue-200'
-            }`}
-            {...register('password', {
-              required: 'Password is required',
-              minLength: {
-                value: 6,
-                message: 'Password must be at least 6 characters',
-              },
-            })}
-          />
-          {errors.password && (
-            <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
-          )}
-        </div>
-
-        <div className="flex justify-end">
-          <button
-            type="button"
-            onClick={() => {
-              setModalOpen(false);
-            }}
-            className="text-primary hover:text-blue-800 text-sm font-medium cursor-pointer"
-          >
-            Forgot Password?
-          </button>
-        </div>
-
-        <button
-          type="submit"
-          disabled={isLoading}
-          className={`w-full px-3 py-4 ${
-            isLoading ? 'bg-white border border-gray-400 ' : 'bg-primary hover:border-gray-400'
-          } text-white text-xs xl:text-sm font-medium hover:cursor-pointer rounded hover:bg-white hover:text-black hover:border-gray-400 border focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-all duration-300 whitespace-nowrap`}
+        <div
+          className={`w-full md:w-1/2 p-6 sm:p-8 lg:p-12 transition-all duration-500 ease-in-out ${
+            isModalOpen
+              ? "opacity-100 translate-x-0"
+              : "opacity-100 translate-x-10"
+          }`}
         >
-          {isLoading ? <LoadingButton color="#28C76F" /> : 'Sign In'}
-        </button>
-      </form>
+          {isModalOpen ? (
+            <div>
+              {/* Sign-in form content */}
+              <div className="flex flex-col items-center mb-8">
+                <Link href="/" className="mb-6">
+                  <Logo height={100} width={224} />
+                </Link>
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                  Welcome Back
+                </h1>
+                <p className="text-gray-600 text-sm md:text-base">
+                  Sign in to access your account
+                </p>
+              </div>
 
-      <div className="my-6 flex items-center">
-        <hr className="flex-grow border-gray-200" />
-        <span className="mx-3 text-gray-500 text-sm">or continue with</span>
-        <hr className="flex-grow border-gray-200" />
-      </div>
+              {/* Sign-in form */}
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <div className="space-y-1">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Email Address
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    className={`w-full px-4 py-[17px] border rounded-lg focus:outline-none focus:ring-2 ${
+                      errors.email
+                        ? "border-red-500 focus:ring-red-200"
+                        : "border-gray-300 focus:ring-blue-200"
+                    }`}
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "Invalid email address",
+                      },
+                    })}
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
 
-      <div className="flex justify-center">
-        <GoogleLogin
-          size="large"
-          onSuccess={handleGoogleSuccess}
-          onError={handleGoogleError}
-          useOneTap
-          text="signin_with"
-          shape="rectangular"
-          theme="filled_blue"
-        />
-      </div>
+                <div className="space-y-1">
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Password
+                  </label>
+                  <input
+                    id="password"
+                    type="password"
+                    placeholder="••••••••"
+                    className={`w-full px-4 py-[17px] border rounded-lg focus:outline-none focus:ring-2 ${
+                      errors.password
+                        ? "border-red-500 focus:ring-red-200"
+                        : "border-gray-300 focus:ring-blue-200"
+                    }`}
+                    {...register("password", {
+                      required: "Password is required",
+                      minLength: {
+                        value: 6,
+                        message: "Password must be at least 6 characters",
+                      },
+                    })}
+                  />
+                  {errors.password && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.password.message}
+                    </p>
+                  )}
+                </div>
 
-      <p className="mt-6 text-center text-gray-600 text-sm">
-        Don't have an account?{' '}
-        <Link href="/signUp" className="text-primary hover:text-blue-800 font-semibold">
-          Sign up
-        </Link>
-      </p>
-    </div>
-  ) : (
-    <div>
-      <ForgotPasswordModal isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
-    </div>
-  )}
-</div>
+                <div className="flex justify-end">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setModalOpen(false);
+                    }}
+                    className="text-primary hover:text-blue-800 text-sm font-medium cursor-pointer"
+                  >
+                    Forgot Password?
+                  </button>
+                </div>
 
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className={`w-full px-3 py-4 ${
+                    isLoading
+                      ? "bg-white border border-gray-400 "
+                      : "bg-primary hover:border-gray-400"
+                  } text-white text-xs xl:text-sm font-medium hover:cursor-pointer rounded hover:bg-white hover:text-black hover:border-gray-400 border focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-all duration-300 whitespace-nowrap`}
+                >
+                  {isLoading ? <LoadingButton color="#28C76F" /> : "Sign In"}
+                </button>
+              </form>
+
+              <div className="my-6 flex items-center">
+                <hr className="flex-grow border-gray-200" />
+                <span className="mx-3 text-gray-500 text-sm">
+                  or continue with
+                </span>
+                <hr className="flex-grow border-gray-200" />
+              </div>
+
+              <div className="flex justify-center gap-4">
+                <section className=" flex justify-center">
+                  <button
+                    onClick={() => setOpen(true)}
+                    className="px-6 py-1 bg-green-700 text-white rounded-sm cursor-pointer hover:bg-green-600 transition"
+                  >
+                    Demo Login
+                  </button>
+
+                  {open && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center  animate-in fade-in duration-300 px-4">
+                      <div className="w-full max-w-md bg-stone-400/20 backdrop-blur-2xl rounded-xl p-6 shadow-lg animate-in zoom-in-95 duration-300">
+                        <div className="flex items-center justify-between mb-5">
+                          <h2 className="text-xl font-semibold">
+                            Demo Credentials
+                          </h2>
+                          <button
+                            onClick={() => setOpen(false)}
+                            className="text-gray-500 text-xl cursor-pointer"
+                          >
+                            ✕
+                          </button>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-3">
+                          {roles.map((role: any) => (
+                            <button
+                              key={role}
+                              onClick={() => loginAsRole(role.key)}
+                              className="rounded-lg border border-gray-300 p-3 hover:bg-green-300 cursor-pointer transition"
+                            >
+                              {role.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </section>
+                <GoogleLogin
+                  size="large"
+                  onSuccess={handleGoogleSuccess}
+                  onError={handleGoogleError}
+                  useOneTap
+                  text="signin_with"
+                  shape="rectangular"
+                  theme="filled_blue"
+                />
+              </div>
+
+              <p className="mt-6 text-center text-gray-600 text-sm">
+                Don't have an account?{" "}
+                <Link
+                  href="/signUp"
+                  className="text-primary hover:text-blue-800 font-semibold"
+                >
+                  Sign up
+                </Link>
+              </p>
+            </div>
+          ) : (
+            <div>
+              <ForgotPasswordModal
+                isModalOpen={isModalOpen}
+                setModalOpen={setModalOpen}
+              />
+            </div>
+          )}
+        </div>
       </div>
 
       {/* <ForgotPasswordModal
