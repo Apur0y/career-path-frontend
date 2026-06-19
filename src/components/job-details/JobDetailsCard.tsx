@@ -351,7 +351,7 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ currentCompany }) => {
       <p className="text-sm  dark: mt-2 flex  md:items-center md:mb-3 gap-2">
         <p className="  mt-0.5 md:mt-0 md:text-lg">Skills Needed: </p>
         <div className="flex gap-1 flex-wrap text-subtitle">
-          {currentCompany?.skills?.map((skill) => (
+          {currentCompany?.skills?.map((skill:any) => (
             <div className="flex items-center">
               {skill} <LuDot className="size-6" />
             </div>
@@ -384,7 +384,7 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ currentCompany }) => {
         <p className=" ">
           {
             currentCompany?.features.find(
-              (p) => p.featureTitle == "Description",
+              (p:any) => p.featureTitle == "Description",
             )?.paragraph
           }
         </p>
@@ -396,8 +396,8 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ currentCompany }) => {
         </h3>
         <ul className="list-disc list-inside  dark: space-y-1">
           {currentCompany?.features
-            ?.find((p) => p.featureTitle == "Responsibilities")
-            ?.point?.map((p) => (
+            ?.find((p:any) => p.featureTitle == "Responsibilities")
+            ?.point?.map((p:any) => (
               <li>{p}</li>
             ))}
         </ul>
@@ -409,8 +409,8 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ currentCompany }) => {
         </h3>
         <ul className="list-disc list-inside  dark: space-y-1">
           {currentCompany?.features
-            ?.find((p) => p.featureTitle == "Requirements:")
-            ?.point?.map((p) => (
+            ?.find((p:any) => p.featureTitle == "Requirements:")
+            ?.point?.map((p:any) => (
               <li>{p}</li>
             ))}
         </ul>
@@ -422,8 +422,8 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ currentCompany }) => {
         </h3>
         <ul className="list-disc list-inside  dark: space-y-1">
           {currentCompany?.features
-            ?.find((p) => p.featureTitle == "Why Join Us?:")
-            ?.point?.map((p) => (
+            ?.find((p:any) => p.featureTitle == "Why Join Us?:")
+            ?.point?.map((p:any) => (
               <li>{p}</li>
             ))}
         </ul>
