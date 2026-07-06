@@ -47,20 +47,20 @@ export default function Banner() {
             </div>
 
             {/* Action buttons */}
-            {/* <div className="flex flex-col sm:flex-row gap-4 max-w-[500px]">
+            <div className="flex flex-col justify-center sm:flex-row gap-4 ">
               <Link href={"/create-account"}>
-                <button className="w-full sm:w-auto px-6 py-3.5 text-base font-medium rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-blue-900 transition-all duration-300">
+                <button className="w-full cursor-pointer sm:w-auto px-6 py-3.5 text-base font-medium rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm text-white hover:bg-primary hover:text-white transition-all duration-300">
                   For Employers
                 </button>
               </Link>
 
               <Link href={"/jobSeeker/start-now"}>
-                <button className="w-full sm:w-auto px-6 py-3.5 text-base font-medium rounded-lg flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 group">
-                  Create AI Resume
+                <button className="w-full cursor-pointer sm:w-auto px-6 py-3.5 text-base font-medium rounded-lg flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 group">
+                  Create Resume
                   <BsArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </Link>
-            </div> */}
+            </div>
 
           </div>
         </div>
