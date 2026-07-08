@@ -90,7 +90,7 @@ export default function RecomandationJob({ title }: JobTitle) {
 
   //         try {
   //             const response = await axios.get(
-  //                 `http://172.252.13.71:5005/api/v1/jobs/recommended-jobs/${myProfile?.data?.profileId}`,
+  //                 `https://career-path-server-tau.vercel.app/api/v1/jobs/recommended-jobs/${myProfile?.data?.profileId}`,
   //                 {
   //                     headers: {
   //                         Authorization: token ? `Bearer ${token}` : "", // Add Authorization header if token exists

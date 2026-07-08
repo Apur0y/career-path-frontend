@@ -38,36 +38,6 @@ const ExperienceSection = ({
   const [selectedExperienceNumber, setSelectedExperienceNumber] = useState<any>(null)
   // const 
 
-  const experienceData = [
-    {
-      experienceNumber: "Experience 1",
-      title: "Mid-Level UI/UX Designer",
-      company: "SM Technology (betopia Group)",
-      date: "08/08/2024 - Till Now",
-      description:
-        "I am very happy to get the opportunity for UI/UX designer intern. I strive to bring creativity, diligence, and fresh perspectives to every project. Eager to learn, I embrace challenges and aim to exceed expectations with my innovative designs and user-centric approach.",
-      hugs: 125,
-    },
-    {
-      experienceNumber: "Experience 2",
-      title: "Jr. UI/UX Designer",
-      company: "SM Technology (betopia Group)",
-      date: "20/04/2024 - 31/07/2024",
-      description:
-        "I am very happy to get the opportunity for UI/UX designer intern. I strive to bring creativity, diligence, and fresh perspectives to every project. Eager to learn, I embrace challenges and aim to exceed expectations with my innovative designs and user-centric approach.",
-      hugs: 26,
-    },
-    {
-      experienceNumber: "Experience 3",
-
-      title: "Intern UI/UX Designer",
-      company: "SM Technology (betopia Group)",
-      date: "20/01/2024 - 18/04/2024",
-      description:
-        "I am very happy to get the opportunity for UI/UX designer intern. I strive to bring creativity, diligence, and fresh perspectives to every project. Eager to learn, I embrace challenges and aim to exceed expectations with my innovative designs and user-centric approach.",
-      hugs: null,
-    },
-  ];
 
   // Handle clicking the edit button
   const handleEditClick = (experience: any, index: any) => {
@@ -140,7 +110,7 @@ const ExperienceSection = ({
 
       console.log("Profile Data Without id: ", profileWithoutId);
 
-      const response = await fetch(`http://172.252.13.71:5005/api/v1/profiles/resume/${updatedProfileData?.User?.id}`, {
+      const response = await fetch(`https://career-path-server-tau.vercel.app/api/v1/profiles/resume/${updatedProfileData?.User?.id}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${Cookies.get("accessToken")}`,
@@ -171,8 +141,8 @@ const ExperienceSection = ({
             className="text-gray-500 hover:text-gray-700 flex items-center gap-1 transition-colors duration-300"
             onClick={() => setIsModalOpen(true)}
           >
-            {/* <Plus className="w-4 h-4" />
-            <span className="text-sm">Add Experience</span> */}
+            <Plus className="w-4 h-4" />
+            <span className="text-sm">Add Experience</span>
           </button>
         </div>
         <div className="  ">

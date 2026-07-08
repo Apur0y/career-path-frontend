@@ -43,7 +43,7 @@ const AboutSection = ({ profileData, setProfileData }: any) => {
         aboutMe: data?.aboutMe,
       };
 
-      const response = await fetch(`http://172.252.13.71:5005/api/v1/profiles/resume/${profileData?.User?.id}`, {
+      const response = await fetch(`https://career-path-server-tau.vercel.app/api/v1/profiles/resume/${profileData?.User?.id}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${Cookies.get("accessToken")}`,

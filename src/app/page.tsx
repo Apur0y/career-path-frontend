@@ -1,17 +1,17 @@
-import AboutUs from "@/components/AboutUs";
-import Banner from "@/components/Banner";
-import ChooseUs from "@/components/ChooseUs";
-import EmployerPlan from "@/components/EmployerPlan";
-import Footer from "@/components/shared/footer/Footer";
-import JobSeekerPlan from "@/components/JobSeekerPlan";
-import Newsletter from "@/components/NewsLetter";
-import PerfectJob from "@/components/Perfectjob";
-import RecentJob from "@/components/recent-job/RecentJob";
-import ScrollTop from "@/components/shared/ScrollTop";
-import SuggestedCourses from "@/components/Suggested/SuggestedCourses";
-import TopTalent from "@/components/TopTalent";
-import Cookies from "js-cookie";
+import dynamic from "next/dynamic";
+
+const RecentJob = dynamic(() => import("@/components/recent-job/RecentJob"));
+const ChooseUs = dynamic(() => import("@/components/ChooseUs"));
+const AboutUs = dynamic(() => import("@/components/AboutUs"));
+const PerfectJob = dynamic(() => import("@/components/Perfectjob"));
+const TopTalent = dynamic(() => import("@/components/TopTalent"));
+const JobSeekerPlan = dynamic(() => import("@/components/JobSeekerPlan"));
+const EmployerPlan = dynamic(() => import("@/components/EmployerPlan"));
+const Newsletter = dynamic(() => import("@/components/NewsLetter"));
+const Footer = dynamic(() => import("@/components/shared/footer/Footer"));
 import Navbar from "@/components/shared/Navbar/Navbar";
+import Banner from "@/components/Banner";
+import ScrollTop from "@/components/shared/ScrollTop";
 
 const navitem = [
   { name: "Home", href: "/" },

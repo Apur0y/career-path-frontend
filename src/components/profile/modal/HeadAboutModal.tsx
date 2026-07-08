@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Cookies from "js-cookie";
 
@@ -33,6 +33,8 @@ const HeadAboutModal = ({
 }: any) => {
 
 
+console.log("bkck",profileData);
+
   const { register, handleSubmit, reset } = useForm<FormData>({
     defaultValues: {
       firstName: profileData?.firstName,
@@ -48,6 +50,21 @@ const HeadAboutModal = ({
     },
   });
 
+    useEffect(() => {
+  if (!profileData) return;
+
+  reset({
+    firstName: profileData.firstName || "",
+    lastName: profileData.lastName || "",
+    JobTitle: profileData.JobTitle || "",
+    phoneNumber: profileData.phoneNumber || "",
+    email: profileData.email || profileData?.User?.email || "",
+    countryRegion: profileData.countryRegion || "",
+    city: profileData.city || "",
+    state: profileData.state || "",
+    image: profileData?.User?.profilePic || null,
+  });
+}, [profileData, reset]);
   // const onSubmit: SubmitHandler<FormData> = (data) => {
   //   console.log(data);
   //   setIsModalOpen(false); // Close modal after submission
@@ -71,7 +88,7 @@ const HeadAboutModal = ({
         // other fields...
       };
 
-      const response = await fetch(`http://172.252.13.71:5005/api/v1/profiles/resume/${profileData?.User?.id}`, {
+      const response = await fetch(`https://career-path-server-tau.vercel.app/api/v1/profiles/resume/${profileData?.User?.id}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${Cookies.get("accessToken")}`,
