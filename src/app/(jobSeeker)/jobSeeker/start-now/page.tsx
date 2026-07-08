@@ -23,8 +23,8 @@ export default function ResumeCreate() {
     } else if (user?.data.role != "JOB_SEEKER") {
       toast.error(" Only Job Seeker can create resume!")
 
-    } else if (myProfile?.data.profileId) {
-      router.push("/jobSeeker/resume-download")
+    // } else if (myProfile?.data.profileId) {
+    //   router.push("/jobSeeker/resume-download")
     }
     else {
       router.push("/jobSeeker/create-resume")
@@ -47,7 +47,7 @@ export default function ResumeCreate() {
           </div>
 
           <div className="text-left flex flex-col  justify-between mt-6 md:mt-0">
-            <h1 className="text-4xl md:text-5xl xl:text-7xl font-bold text-[#28C76F] mb-4 leading-[1.24]">
+            <h1 className="text-4xl md:text-5xl xl:text-7xl font-bold text-primary mb-4 leading-[1.24]">
               <span className="text-gray-900">Create Your</span> AI- <br />
               Powered Resume
             </h1>

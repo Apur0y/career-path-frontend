@@ -12,19 +12,24 @@ import Cookies from "js-cookie";
 import { Loader } from "@/components/shared/MainLoader";
 import { GoDownload } from "react-icons/go";
 import Link from "next/link";
+import { useGetMeQuery } from "@/redux/features/auth/auth";
 
 
 
 const ProfilePage: React.FC = () => {
   const [profileData, setProfileData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
+    const { data: myUser, refetch } = useGetMeQuery({});
+
+    console.log("Here is the use", myUser?.data.id);
 
   // Fetch profile data when the component mounts
   useEffect(() => {
+
     const fetchProfileData = async () => {
       try {
         const response = await fetch(
-          "http://172.252.13.71:5005/api/v1/profiles/get-my-profile",
+          `https://career-path-server-tau.vercel.app/api/v1/profiles/${myUser?.data.id}`,
           {
             method: "GET",
             headers: {
@@ -54,13 +59,13 @@ const ProfilePage: React.FC = () => {
     };
 
     fetchProfileData();
-  }, []);
+  }, [myUser?.data.id]);
 
   // Function to update the profile data
   const updateProfileData = async (updatedProfileData: any) => {
     try {
       const response = await fetch(
-        `http://172.252.13.71:5005/api/v1/profiles/resume/${updatedProfileData?.User?.id}`,
+        `https://career-path-server-tau.vercel.app/api/v1/profiles/resume/${updatedProfileData?.User?.id}`,
         {
           method: "PATCH",
           headers: {
@@ -107,7 +112,7 @@ const ProfilePage: React.FC = () => {
 
       // Send update to backend
       const response = await fetch(
-        `http://172.252.13.71:5005/api/v1/profiles/resume/${profileData?.User?.id}`,
+        `https://career-path-server-tau.vercel.app/api/v1/profiles/resume/${profileData?.User?.id}`,
         {
           method: "PATCH",
           headers: {
@@ -203,7 +208,7 @@ const ProfilePage: React.FC = () => {
       setProfileData(updatedProfile);
 
       const response = await fetch(
-        `http://172.252.13.71:5005/api/v1/profiles/resume/${profileData?.User?.id}`,
+        `https://career-path-server-tau.vercel.app/api/v1/profiles/resume/${profileData?.User?.id}`,
         {
           method: "PATCH",
           headers: {
