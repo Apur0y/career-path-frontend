@@ -31,7 +31,7 @@ export const useTokenRefresh = () => {
           console.log("📤 Sending refresh request via HTTP-only cookies...");
 
           const response = await fetch(
-            "http://172.252.13.71:5005/api/v1/auth/refresh-token",
+            "https://career-path-server-tau.vercel.app/api/v1/auth/refresh-token",
             {
               method: "POST",
               headers: {
@@ -74,7 +74,7 @@ export const useTokenRefresh = () => {
 
         try {
           const response = await fetch(
-            "http://172.252.13.71:5005/api/v1/auth/refresh-token",
+            "https://career-path-server-tau.vercel.app/api/v1/auth/refresh-token",
             {
               method: "POST",
               headers: {

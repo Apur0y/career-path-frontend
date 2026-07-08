@@ -147,7 +147,7 @@ const ProfilePage: React.FC = () => {
       setProfileData(updatedProfile);
 
       const response = await fetch(
-        `http://172.252.13.71:5005/api/v1/profiles/resume/${profileData?.User?.id}`,
+        `https://career-path-server-tau.vercel.app/api/v1/profiles/resume/${profileData?.User?.id}`,
         {
           method: "PATCH",
           headers: {
@@ -177,7 +177,7 @@ const ProfilePage: React.FC = () => {
       setProfileData(updatedProfile);
 
       const response = await fetch(
-        `http://172.252.13.71:5005/api/v1/profiles/resume/${profileData?.User?.id}`,
+        `https://career-path-server-tau.vercel.app/api/v1/profiles/resume/${profileData?.User?.id}`,
         {
           method: "PATCH",
           headers: {
@@ -247,7 +247,7 @@ const ProfilePage: React.FC = () => {
             </button>
              </Link>
             </p>
-              <ProfileHeader profileData={profileData} setProfileData={setProfileData} />
+              <ProfileHeader updateProfileData={updateProfileData} profileData={profileData} setProfileData={setProfileData} />
               <div className="space-y-12 mt-8">
                 <AboutSection profileData={profileData} setProfileData={setProfileData} />
 

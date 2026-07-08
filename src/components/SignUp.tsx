@@ -63,7 +63,7 @@ export default function SignUpForm() {
   const handleGoogleSuccess = async (credentialResponse: any) => {
     try {
       const response = await axios.post(
-        `http://172.252.13.71:5005/api/v1/auth/google-login`,
+        `https://career-path-server-tau.vercel.app/api/v1/auth/google-login`,
         {
           googleToken: credentialResponse.credential,
         }

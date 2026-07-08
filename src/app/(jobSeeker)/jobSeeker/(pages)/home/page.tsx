@@ -10,13 +10,13 @@ export default function JobSeekerHomePage() {
 
   return (
     <div>
-      <RecomandationJob title={title}></RecomandationJob>
       <SeekerBanner />
       {/* <RecentJob title={title}></RecentJob> */}
       <TopCategory />
       <RecentUpload />
       <PopularCompany />
-      <SuggestedCourses />
+      {/* <RecomandationJob title={title}></RecomandationJob> */}
+      {/* <SuggestedCourses /> */}
     </div>
   );
 }

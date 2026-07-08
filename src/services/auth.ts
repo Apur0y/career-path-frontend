@@ -4,7 +4,7 @@ export const loginUser = async (userData: {
   password: string;
 }) => {
   try {
-    const res = await fetch(`http://172.252.13.71:5005/api/v1/auth/login`, {
+    const res = await fetch(`https://career-path-server-tau.vercel.app/api/v1/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export const getCurrentUser = () => {
 export const getNewToken = async () => {
   try {
     const res = await fetch(
-      `http://172.252.13.71:5005/api/v1/auth/refresh-token`,
+      `https://career-path-server-tau.vercel.app/api/v1/auth/refresh-token`,
       {
         method: "POST",
         headers: {
@@ -72,7 +72,7 @@ export const getNewToken = async () => {
 export const refreshTokenClient = async () => {
   try {
     const res = await fetch(
-      `http://172.252.13.71:5005/api/v1/auth/refresh-token`,
+      `https://career-path-server-tau.vercel.app/api/v1/auth/refresh-token`,
       {
         method: "POST",
         headers: {

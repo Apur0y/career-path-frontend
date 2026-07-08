@@ -59,7 +59,7 @@ export default function RecentJob({ title }: JobTitle) {
 
       try {
         const response = await axios.get(
-          `http://172.252.13.71:5005/api/v1/jobs/recommended-jobs/${profileId}`,
+          `https://career-path-server-tau.vercel.app/api/v1/jobs/recommended-jobs/${profileId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

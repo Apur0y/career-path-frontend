@@ -165,8 +165,7 @@ const MainComponents = () => {
     }
   };
 
-  console.log(formData)
-
+ 
   return (
     <Container>
       <div className=" px-2">

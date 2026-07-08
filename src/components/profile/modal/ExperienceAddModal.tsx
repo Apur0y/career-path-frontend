@@ -19,12 +19,11 @@ const ExperienceAddModal: React.FC<ExperienceAddModal> = ({
 }) => {
   const { register, handleSubmit, reset, formState } = useForm<FormData>({
     defaultValues: {
-      jobTitle: "Mid-Level UI/UX Designer",
-      company: "SM Technology (betopia Group)",
-      dateRange: "08/08/2024 - Till Now",
+      jobTitle: "",
+      company: "",
+      dateRange: "",
       experienceSummary:
-        "I am very happy to get the opportunity for UI/UX Designer intern. I strive to bring creativity, diligence, and fresh perspectives to every project. Eager to learn, I embrace challenges and aim to exceed expectations with my innovative designs and user-centric approach.",
-    },
+""    },
   });
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
