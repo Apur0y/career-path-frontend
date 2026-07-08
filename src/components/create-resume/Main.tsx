@@ -143,7 +143,7 @@ const MainComponents = () => {
 
       // 🚀 Send request
       const res = await fetch(
-        "http://31.97.216.98:5000/api/v1/profiles/create",
+        "https://career-path-server-tau.vercel.app/api/v1/profiles/create",
         {
           method: "POST",
           body: sendForm,
