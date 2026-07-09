@@ -42,6 +42,29 @@ export default function Navbar({ navItem }: NavbarProps) {
 
   const { data: myUser, refetch } = useGetMeQuery({});
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+useEffect(() => {
+  // Non-home pages should always have a white navbar
+  if (pathname !== "/") {
+    setIsScrolled(true);
+    return;
+  }
+
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY > 10);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  // Set initial state
+  handleScroll();
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, [pathname]);
+
   // ✅ Get auth state from Redux instead of API calls
   const { token } = useAppSelector((state) => state.auth);
   const user = myUser?.data;
@@ -157,19 +180,24 @@ export default function Navbar({ navItem }: NavbarProps) {
   });
 
   return (
-    <nav className="bg-white border-b border-gray-100 shadow-sm sticky top-0 z-40 ">
+    <nav
+      className={`fixed top-0 z-40 w-full border-b transition-all duration-300 ${
+        isScrolled
+          ? "bg-white text-gray-800 shadow-sm border-gray-200"
+          : "bg-transparent  border-transparent shadow-none"
+      }`}>
       <div className="container py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href={"/"}>
           <Logo
             width={200}
             height={200}
-            className="max-w-[153px] max-h-[72px]"
+            className="max-w-38.25 max-h-18"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-4 items-center text-sm font-medium text-gray-700">
+        <div className="hidden md:flex space-x-4 items-center text-sm font-medium ">
           <button
             onClick={() => handleSearch()}
             className={`flex items-center gap-2 px-6 py-3 bg-primary text-white rounded hover:bg-neutral-900 transition whitespace-nowrap cursor-pointer ${searchView ? "hidden" : "block"
@@ -187,7 +215,7 @@ export default function Navbar({ navItem }: NavbarProps) {
               <React.Fragment key={item.name}>
                 <Link
                   href={item.href}
-                  className="hover:text-primary hover:underline transition-colors duration-200"
+                  className={` hover:text-primary hover:underline transition-colors duration-200 ${isScrolled? "":"text-white"}` }
                 >
                   {item.name}
                 </Link>
@@ -202,16 +230,18 @@ export default function Navbar({ navItem }: NavbarProps) {
               onClick={toggleMenu}
               className="flex items-center gap-2 cursor-pointer"
             >
-              <p className="flex items-center  transition-all duration-300">
+              <p className="flex items-center transition-all duration-300">
 
                 <>
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
-                    <LuUser className="size-9 bg-primary hover:bg-blue-700 transition-all duration-300 cursor-pointer rounded-full p-2 text-white mr-2" />
+                    <LuUser className="size-9 bg-primary hover:bg-primary/80 transition-all duration-300 cursor-pointer rounded-full p-2 text-white mr-2" />
                   </motion.div>
+                  <p className={`${ isScrolled?"":"text-white"}`}>
                   {user?.fullName}
+                  </p>
                 </>
               </p>
             </button>) : (

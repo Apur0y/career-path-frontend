@@ -74,6 +74,8 @@ export function LanguageSwitcher() {
   const languageNames: Record<string, string> = {
     en: "English",
     de: "German",
+    fr: "French",
+    bn:"Bangla"
   };
 
   return (
