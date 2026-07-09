@@ -22,7 +22,7 @@ export const MenuItem = ({
     whileHover={{ scale: 1.02 }}
     whileTap={{ scale: 0.98 }}
     onClick={logoutBtn}
-    className={`flex items-center gap-3   rounded-lg cursor-pointer transition  text-xs md:text-base${
+    className={`flex items-center gap-3   rounded-lg cursor-pointer transition  text-xs md:text-base ${
       active ? "" : ""
     } ${danger ? "text-red-500 hover:bg-red-100" : "hover:bg-gray-100"}`}
   >
