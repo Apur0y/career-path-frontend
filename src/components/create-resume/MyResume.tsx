@@ -52,6 +52,7 @@ export default function MyResume({ userId }: { userId: string | null }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const downloadResume = async () => {
+    console.log("you are in")
     const element = printRef.current;
     if (!element) {
       return;
@@ -94,7 +95,7 @@ export default function MyResume({ userId }: { userId: string | null }) {
   };
 
   const {data:userResume}=useGetMyProfileQuery({});
-  console.log(userResume?.data)
+
   
   // const token=localStorage.getItem("userId")
   const storedUserId =  userResume?.data.profileId;
@@ -117,7 +118,7 @@ export default function MyResume({ userId }: { userId: string | null }) {
       const idToUse = userId || storedUserId;
       try {
         const response = await fetch(
-          `https://career-path-server-tau.vercel.app/api/v1/profiles/resume/${idToUse}`,
+          `https://career-path-server-tau.vercel.app/api/v1/profiles/${'6887707047413d052c17a8c5'}`,
           {
             method: "GET",
             headers: {

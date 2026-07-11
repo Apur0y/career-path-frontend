@@ -5,10 +5,9 @@ import Image from "next/image";
 import { PiPhone } from "react-icons/pi";
 import { TbMapPinCode } from "react-icons/tb";
 import { RefObject } from "react";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaTwitter } from "react-icons/fa";
 import { useGetMeQuery } from "@/redux/features/auth/auth";
 import { IoLocationOutline } from "react-icons/io5";
-
 
 interface ResumeComponentProps {
   downloadResume: () => void;
@@ -24,8 +23,6 @@ const ResumeComponent: React.FC<ResumeComponentProps> = ({
   function formatDateRangeWithTillNow(start: string, end?: string): string {
     const startDate = new Date(start);
     const endDate = end ? new Date(end) : null;
-
-   
 
     if (isNaN(startDate.getTime()) || (end && isNaN(endDate!.getTime()))) {
       return "Invalid date";
@@ -44,7 +41,7 @@ const ResumeComponent: React.FC<ResumeComponentProps> = ({
     return `${startFormatted} - ${endFormatted}`;
   }
 
-    const { data: myUser, refetch } = useGetMeQuery({})
+  const { data: myUser, refetch } = useGetMeQuery({});
 
   return (
     // <div ref={printRef} className="p-5 border-4 border-[#2B93DD] mx-auto bg-white min-h-screen overflow-hidden flex flex-col">
@@ -69,11 +66,10 @@ const ResumeComponent: React.FC<ResumeComponentProps> = ({
               {/* <div className="h-[150px] w-[150px] rounded-full bg-[#E5E7EB]  flex items-center justify-center"></div> */}
             </div>
           </div>
-        
 
           <div className="mt-0">
             <h1 className="text-5xl font-bold text-[#323B4C] mb-2">
-              {profileData.profile?.firstName} {profileData.profile?.lastName}
+              {profileData?.firstName} {profileData?.lastName}
             </h1>
             <p className="text-xl text-[#323B4C] mb-2">
               {profileData?.profile?.JobTitle}
@@ -81,19 +77,18 @@ const ResumeComponent: React.FC<ResumeComponentProps> = ({
             <div className="flex flex-wrap gap-8 justify-start items-center text-[#323B4C]">
               <div className="flex items-center space-x-2">
                 <PiPhone className="w-4 h-4" />
-                <p>{profileData?.profile.phoneNumber}</p>
+                <p>{profileData?.phoneNumber || ""}</p>
               </div>
               <div className="flex items-center space-x-2">
                 <CgMail className="w-4 h-4" />
-                <p>{profileData?.profile.email}</p>
+                <p>{profileData?.email}</p>
               </div>
             </div>
             <div className="flex items-center space-x-2 text-[#323B4C] mt-2">
-              <IoLocationOutline  className="w-4 h-4" />
+              <IoLocationOutline className="w-4 h-4" />
               <p>
-                {profileData.profile?.address}, {profileData.profile?.city},
-                {profileData.profile?.state},{" "}
-                {profileData.profile?.countryRegion}.
+                {profileData?.address}, {profileData?.city},{profileData?.state}
+                , {profileData?.countryRegion}.
               </p>
             </div>
           </div>
@@ -104,172 +99,207 @@ const ResumeComponent: React.FC<ResumeComponentProps> = ({
         {/* Left Column */}
         <div className="border-r-[1px] border-[#a2d2f0] pr-16">
           {/* Portfolio */}
-          <div className="mb-8">
-            <h2 className="text-lg font-bold text-black mb-4 border-b-0 border-blue pb-2">
-              PORTFOLIO
-            </h2>
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2">
-                <a
-                  href={`${profileData?.profile?.socialMedia?.personal_website_url}`}
-                  className="text-[#2563EB] hover:underline text-sm flex gap-2 items-center"
-                >
-                  <FaExternalLinkAlt className="w-4 h-4 text-[#ff46b8] pt-0 size-6" />
-                  <p>Portfolio</p>
-                </a>
-              </div>
-              <div className="flex items-center space-x-2">
-                <a
-                  href={`${profileData.profile?.socialMedia?.linkedin_profile_url}`}
-                  className="text-[#2563EB] hover:underline text-sm flex gap-2 items-center"
-                >
-                  <FaLinkedin className="w-4 h-4 text-[#3B82F6] pt-0 size-6" />
-                  <p>LinkedIn</p>
-                </a>
+          {(profileData?.socialMedia?.personal_website_url ||
+            profileData?.socialMedia?.linkedin_profile_url) && (
+            <div className="mb-8">
+              <h2 className="text-lg font-bold  mb-4">PORTFOLIO</h2>
+
+              <div className="space-y-2">
+                {profileData?.socialMedia?.personal_website_url && (
+                  <a
+                    href={profileData.socialMedia.personal_website_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#2563EB] hover:underline text-sm flex gap-2 items-center"
+                  >
+                    <FaExternalLinkAlt className="size-5 text-[#ff46b8]" />
+                    <span>Portfolio</span>
+                  </a>
+                )}
+
+                {profileData?.socialMedia?.linkedin_profile_url && (
+                  <a
+                    href={profileData.socialMedia.linkedin_profile_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#2563EB] hover:underline text-sm flex gap-2 items-center"
+                  >
+                    <FaLinkedin className="size-5 text-[#3B82F6]" />
+                    <span>LinkedIn</span>
+                  </a>
+                )}
+
+                {profileData?.socialMedia?.github_url && (
+                  <a
+                    href={profileData.socialMedia.github_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#2563EB] hover:underline text-sm flex gap-2 items-center"
+                  >
+                    <FaGithub className="size-5" />
+                    <span>GitHub</span>
+                  </a>
+                )}
+
+                {profileData?.socialMedia?.twitter_url && (
+                  <a
+                    href={profileData.socialMedia.twitter_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#2563EB] hover:underline text-sm flex gap-2 items-center"
+                  >
+                    <FaTwitter className="size-5 " />
+                    <span>Twitter</span>
+                  </a>
+                )}
+
+                {profileData?.socialMedia?.portfolio_url && (
+                  <a
+                    href={profileData.socialMedia.portfolio_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#2563EB] hover:underline text-sm flex gap-2 items-center"
+                  >
+                    <FaExternalLinkAlt className="size-5 text-[#ff46b8]" />
+                    <span>Portfolio Website</span>
+                  </a>
+                )}
               </div>
             </div>
-          </div>
+          )}
 
           {/* Skills */}
-          <div className="mb-8">
-            <h2 className="text-lg font-bold text-black mb-4 border-b-0 border-black pb-2">
-              SKILLS
-            </h2>
-            <ul className="flex justify-center items-start flex-col">
-              {profileData?.profile?.skills.map((skill: string) => (
-                <li key={skill} className="flex items-center  space-x-2">
-                  {/* <div className="w-1 h-1 bg-[#90CDF4] rounded-full"></div> */}
-                  <span className="text-[#374151]">{skill}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Languages */}
-          {profileData?.profile?.languages && (
+          {profileData?.skills?.length > 0 && (
             <div className="mb-8">
-              <h2 className="text-lg font-bold text-black mb-4 border-b-0 border-black pb-2">
-                LANGUAGES
-              </h2>
-              <ul>
-                {profileData?.profile?.languages.map(
-                  (lang: string, index: number | string) => (
-                    <li key={index} className="flex items-center space-x-2">
-                      {/* <div className="w-1 h-1 bg-[#90CDF4] rounded-full"></div> */}
-                      <span className="text-[#374151]">{lang}</span>
-                    </li>
-                  )
-                )}
+              <h2 className="text-lg font-bold  mb-4">SKILLS</h2>
+
+              <ul className="flex flex-col gap-1">
+                {profileData.skills.map((skill: string) => (
+                  <li key={skill} className="text-[#374151]">
+                    {skill}
+                  </li>
+                ))}
               </ul>
             </div>
           )}
 
-          {/* Co-curricular Activities */}
-          {/* <div className="mb-8">
-            <h2 className="text-lg font-bold text-black mb-4 border-b-0 border-black pb-2">CO-CURRICULAR ACTIVITIES</h2>
-            <ul>
-              {["BEE Member", "Travelling", "Cricket"].map((activity) => (
-                <li key={activity} className="flex items-center space-x-2">
-                  <div className="w-1 h-1 bg-[#90CDF4] rounded-full"></div>
-                  <span className='text-[#374151]'>{activity}</span>
-                </li>
-              ))}
-            </ul>
-          </div> */}
+          {/* Languages */}
+          {profileData?.languages?.length > 0 && (
+            <div className="mb-8">
+              <h2 className="text-lg font-bold  mb-4">LANGUAGES</h2>
+
+              <ul className="flex flex-col gap-1">
+                {profileData.languages.map((lang: string, index: number) => (
+                  <li key={index} className="text-[#374151]">
+                    {lang}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* Right Column */}
         <div className="w-2/3">
           {/* About Me */}
           <div className="mb-8">
-            <h2 className="text-lg font-bold text-black mb-4 border-b-0 border-black pb-2">
-              ABOUT ME
-            </h2>
-            <p className="text-[#374151]">
-              {profileData.resume?.data?.sections[1]?.content[0]}
-            </p>
+            <h2 className="text-lg font-bold  mb-4">ABOUT ME</h2>
+            <p className="text-[#374151]">{profileData?.aboutMe}</p>
           </div>
 
           {/* Education */}
-          {profileData?.profile?.education && (
+          {profileData?.education?.length > 0 && (
             <div className="mb-8">
-              <h2 className="text-lg font-bold text-black mb-4 border-b-0 border-black pb-2">
+              <h2 className="text-lg font-bold  mb-4">
                 EDUCATION QUALIFICATION
               </h2>
-              <div>
-                {profileData?.profile?.education?.map((edu: any, idx: any) => (
-                  <div key={idx} className="mb-3">
-                    <h3 className="font-semibold text-[#1F2937]">
-                      {edu.degree}
-                    </h3>
-                    <p className="text-sm text-[#374151]">
-                      {edu.institution_name}
-                    </p>
-                    <p className="text-sm text-[#374151]">{edu.major}</p>
-                  </div>
-                ))}
-              </div>
+
+              {profileData.education.map((edu: any, idx: number) => (
+                <div key={idx} className="mb-4">
+                  <h3 className="font-semibold text-[#1F2937]">{edu.degree}</h3>
+                  <p className="text-sm text-[#374151]">
+                    {edu.institution_name}
+                  </p>
+                  <p className="text-sm text-[#374151]">{edu.major}</p>
+                </div>
+              ))}
             </div>
           )}
 
-          {/* Training */}
-          {profileData?.profile?.certifications.length>0 && (
+          {/* Training / Certification */}
+          {profileData?.certifications?.length > 0 && (
             <div className="mb-8">
-              <h2 className="text-lg font-bold text-black mb-4 border-b-0 border-black pb-2">
+              <h2 className="text-lg font-bold  mb-4">
                 TRAINING / CERTIFICATION
               </h2>
-              <div className="">
-                {profileData?.profile?.certifications?.map(
-                  (certificate: any, idx: any) => (
-                    <div key={idx} className="mb-3">
-                      <h3 className="font-semibold text-[#1F2937]">
-                        {certificate?.certification_name}
-                      </h3>
+
+              {profileData.certifications.map(
+                (certificate: any, idx: number) => (
+                  <div key={idx} className="mb-4">
+                    <h3 className="font-semibold text-[#1F2937]">
+                      {certificate.certification_name}
+                    </h3>
+
+                    <p className="text-sm text-[#374151]">
+                      {certificate.issuing_organization}
+                    </p>
+
+                    {certificate.issue_date && (
                       <p className="text-sm text-[#374151]">
-                        {certificate?.issuing_organization}
+                        Issue Date: {certificate.issue_date}
                       </p>
+                    )}
+
+                    {certificate.expiry_date && (
                       <p className="text-sm text-[#374151]">
-                        {certificate?.issue_date}
+                        Expiry Date: {certificate.expiry_date}
                       </p>
-                      <p className="text-sm text-[#374151]">
-                        {certificate?.expiry_date}
-                      </p>
-                    </div>
-                  )
-                )}
-              </div>
+                    )}
+                  </div>
+                ),
+              )}
             </div>
           )}
 
           {/* Work Experience */}
-          {profileData?.profile?.jobExperience && (
+          {profileData?.jobExperience?.length > 0 && (
             <div className="mb-8">
-              <h2 className="text-lg font-bold text-black mb-4 border-b-0 border-black pb-2">
+              <h2 className="text-lg font-bold  mb-4">
                 WORK EXPERIENCE
               </h2>
-              <div>
-                {profileData?.profile?.jobExperience?.map(
-                  (job: any, idx: any) => (
-                    <div key={idx} className="space-y-6 mb-5">
-                      <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-sm text-[#1F2937]">
-                          {job?.job_title}
-                        </h3>
-                        <span className="text-sm text-[#6B7280]">
-                          {formatDateRangeWithTillNow(
-                            job?.start_date,
-                            job?.end_date
-                          )}
+
+              {profileData.jobExperience.map((job: any, idx: number) => (
+                <div key={idx} className="mb-6">
+                  <div className="flex justify-between items-start">
+                    <h3 className="font-semibold text-[#1F2937]">
+                      {job.job_title}
+                    </h3>
+
+                    <span className="text-sm text-[#6B7280]">
+                      {formatDateRangeWithTillNow(job.start_date, job.end_date)}
+                    </span>
+                  </div>
+
+                  <p className="font-medium text-[#374151] mt-1">
+                    {job.company_name}
+                  </p>
+
+                  <p className="text-[#6B7280] mt-2">{job.job_description}</p>
+
+                  {job.skills?.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {job.skills.map((skill: string, index: number) => (
+                        <span
+                          key={index}
+                          className="px-2 py-1  rounded text-xs"
+                        >
+                          {skill}
                         </span>
-                      </div>
-                      <p className="font-semibold text-[#1F2937] mb-2">
-                        {job?.company_name}
-                      </p>
-                      <p className="text-[#6B7280]">{job?.job_description}</p>
+                      ))}
                     </div>
-                  )
-                )}
-              </div>
+                  )}
+                </div>
+              ))}
             </div>
           )}
         </div>
@@ -280,9 +310,10 @@ const ResumeComponent: React.FC<ResumeComponentProps> = ({
 
 export default ResumeComponent;
 
-
-{/* <Link href={"/jobSeeker/home"} className="w-full">
+{
+  /* <Link href={"/jobSeeker/home"} className="w-full">
             <Button className="w-full py-3 px-6 rounded-lg border border-primary hover:border-secondary hover:bg-white hover:text-secondary hover:border transition  font-medium cursor-pointer" name="Find Your Favorite Job">
               Find Your Favorite Job
             </Button>
-          </Link> */}
+          </Link> */
+}
