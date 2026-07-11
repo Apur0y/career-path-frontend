@@ -17,16 +17,26 @@ export default function JobList({ filtersData }: any) {
     const { data: info, isLoading, error } = useGetAllJobPostsQuery({});
 
     const allJob = info?.data;
-    console.log(allJob?.data)
+  
     const current = pathname.includes("/jobSeeker/saved-jobs")
+    const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
 
-    useEffect(() => {
-        if (filtersData?.length > 0) {
-            setJobs(filtersData);
-        } else {
-            setJobs(allJob?.data)
-        }
-    }, [allJob?.data, filtersData])
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+};
+
+useEffect(() => {
+  if (filtersData?.length > 0) {
+    setJobs(shuffleArray(filtersData));
+  } else if (allJob?.data?.length > 0) {
+    setJobs(shuffleArray(allJob.data));
+  }
+}, [allJob?.data, filtersData]);
 
     if (isLoading) return  <div className="md:min-w-[666px] max-h-[250px] flex flex-col items-center justify-center py-12 px-4 bg-white rounded-lg shadow-sm text-center border border-gray-200">
                         

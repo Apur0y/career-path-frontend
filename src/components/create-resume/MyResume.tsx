@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import Cookies from "js-cookie";
-import Lottie from 'react-lottie'; 
+import Lottie from "react-lottie";
 import { useGetMyProfileQuery } from "@/redux/features/auth/auth";
 
 // Adjust path if different
@@ -50,66 +50,64 @@ export default function MyResume({ userId }: { userId: string | null }) {
 
   const [profileData, setProfileData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoading2, setIsLoading2] = useState(false);
 
   const downloadResume = async () => {
-    console.log("you are in")
-    const element = printRef.current;
-    if (!element) {
-      return;
+    if (!printRef.current || isLoading2) return;
+
+    try {
+      setIsLoading2(true);
+
+      const canvas = await html2canvas(printRef.current, {
+        scale: 1,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+      });
+
+      const data = canvas.toDataURL("image/png");
+
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "px",
+        format: "a4",
+      });
+
+      const imgProperties = pdf.getImageProperties(data);
+
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+
+      const scaleFactor = Math.min(
+        pdfWidth / imgProperties.width,
+        pdfHeight / imgProperties.height,
+      );
+
+      const scaledWidth = imgProperties.width * scaleFactor;
+      const scaledHeight = imgProperties.height * scaleFactor;
+
+      pdf.addImage(data, "PNG", 0, 0, scaledWidth, scaledHeight);
+
+      pdf.save("my_resume.pdf");
+    } catch (error) {
+      console.error("Failed to generate PDF:", error);
+    } finally {
+      setIsLoading2(false);
     }
-
-    console.log(element);
-    // Capture the content as a canvas
-
-    const canvas = await html2canvas(element, {
-      scale: 2,
-    });
-    const data = canvas.toDataURL("image/png");
-
-    const pdf = new jsPDF({
-      orientation: "portrait",
-      unit: "px",
-      format: "a4",
-    });
-
-    // Get the image properties (width and height)
-    const imgProperties = pdf.getImageProperties(data);
-
-    // A4 size in points
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight();
-
-    // Calculate the scaling factor to fit the content to the A4 page
-    const scaleFactor = Math.min(
-      pdfWidth / imgProperties.width,
-      pdfHeight / imgProperties.height
-    );
-    const scaledWidth = imgProperties.width * scaleFactor;
-    const scaledHeight = imgProperties.height * scaleFactor;
-
-    // Add the image to the PDF
-    pdf.addImage(data, "PNG", 0, 0, scaledWidth, scaledHeight);
-
-    // Save the PDF
-    pdf.save("my_resume.pdf");
   };
 
-  const {data:userResume}=useGetMyProfileQuery({});
+  const { data: userResume } = useGetMyProfileQuery({});
 
-  
   // const token=localStorage.getItem("userId")
-  const storedUserId =  userResume?.data.profileId;
+  const storedUserId = userResume?.data.profileId;
 
-     const defaultOptions = {
+  const defaultOptions = {
     loop: true, // Whether the animation should loop
     autoplay: true, // Whether the animation should start automatically
-    animationData: require('@/assets/banner/loading.json'), // Path to your animation file
+    animationData: require("@/assets/banner/loading.json"), // Path to your animation file
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice', // Aspect ratio configuration
+      preserveAspectRatio: "xMidYMid slice", // Aspect ratio configuration
     },
   };
-
-
 
   useEffect(() => {
     setIsLoading(true);
@@ -118,13 +116,13 @@ export default function MyResume({ userId }: { userId: string | null }) {
       const idToUse = userId || storedUserId;
       try {
         const response = await fetch(
-          `https://career-path-server-tau.vercel.app/api/v1/profiles/${'6887707047413d052c17a8c5'}`,
+          `https://career-path-server-tau.vercel.app/api/v1/profiles/${"6887707047413d052c17a8c5"}`,
           {
             method: "GET",
             headers: {
               Authorization: `Bearer ${Cookies.get("accessToken")}`, // Use Cookies.get if using cookies
             }, // if using HttpOnly cookie
-          }
+          },
         );
 
         if (!response.ok) {
@@ -175,14 +173,26 @@ export default function MyResume({ userId }: { userId: string | null }) {
         <div className="flex gap-12 py-16 ">
           <button
             onClick={downloadResume}
-            className="w-full bg-[#DBDBDB] text-black  py-3 px-6 rounded-lg hover:bg-gray-200 transition  font-medium cursor-pointer"
-            name="Download Resume"
+            disabled={isLoading2}
+            className={`w-full py-3 px-6 rounded-lg font-medium flex items-center justify-center gap-2 transition
+    ${
+      isLoading2
+        ? "bg-gray-400 cursor-not-allowed"
+        : "bg-[#DBDBDB] hover:bg-gray-200 cursor-pointer"
+    }`}
           >
-            Download Resume
+            {isLoading2 && (
+              <div className="w-5 h-5 border-2 border-gray-600 border-t-transparent rounded-full animate-spin" />
+            )}
+
+            {isLoading2 ? "Downloading PDF..." : "Download Resume"}
           </button>
 
           <Link href={"/jobSeeker/home"} className="w-full">
-            <Button className="w-full py-3 px-6 rounded-lg " name="Find Your Favorite Job">
+            <Button
+              className="w-full py-3 px-6 rounded-lg "
+              name="Find Your Favorite Job"
+            >
               Find Your Favorite Job
             </Button>
           </Link>

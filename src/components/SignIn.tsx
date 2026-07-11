@@ -38,11 +38,11 @@ const roles = [
 ];
 
 const credentials = {
-  jobSeeker: {
+  employer: {
     email: "aaa@gmail.com",
     password: "000000",
   },
-  employer: {
+  jobSeeker: {
     email: "eee@gmail.com",
     password: "000000",
   },

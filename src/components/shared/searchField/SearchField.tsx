@@ -57,10 +57,10 @@ export default function SearchField({ setAnimate, animate }: any) {
   // Enhanced filtering logic based on focused input
   useEffect(() => {
     if (!activeInput) {
-      setSuggestions([]);
-      setShowResults(false);
-      return;
-    }
+  if (suggestions.length) setSuggestions([]);
+  if (showResults) setShowResults(false);
+  return;
+}
 
     const inputValue = activeInput === 'jobName' ? watchedJobName : watchedLocation;
 
