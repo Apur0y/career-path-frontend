@@ -12,6 +12,7 @@ const Footer = dynamic(() => import("@/components/shared/footer/Footer"));
 import Navbar from "@/components/shared/Navbar/Navbar";
 import Banner from "@/components/Banner";
 import ScrollTop from "@/components/shared/ScrollTop";
+import Disclaimer from "@/components/profile/Disclaimer";
 
 const navitem = [
   { name: "Home", href: "/" },
@@ -24,6 +25,10 @@ const navitem = [
 const page = () => {
   return (
     <div className="black-main relative">
+      <div className="fixed bottom-0 z-80">
+
+      <Disclaimer/>
+      </div>
       <Navbar navItem={navitem}></Navbar>
       <Banner></Banner>
       <RecentJob title={"Recent Job"}></RecentJob>
