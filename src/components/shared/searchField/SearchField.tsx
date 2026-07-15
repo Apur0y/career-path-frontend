@@ -165,8 +165,8 @@ export default function SearchField({ setAnimate, animate }: any) {
       // toast.error('Please enter a job title or location to search.');
       setFocusedInput('jobName');
       setActiveInput('jobName');
-      setWarning(true)
-      return;
+      // setWarning(true)
+      // return;
     }
 
     setShowResults(false);

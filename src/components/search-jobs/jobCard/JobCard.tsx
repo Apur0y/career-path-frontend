@@ -40,7 +40,7 @@ export default function JobCard({ job }: { job: Job }) {
                             <h3 className="font-semibold text-lg md:text-[28px] text-gray-900">{company?.companyName || job.company?.companyName}</h3>
                             <p className="text-gray-500 text-sm">Uploaded {company?.createdAt && formatDistanceToNow(new Date(company?.createdAt), { addSuffix: true })}</p>
                         </div>
-                        <div className=" rounded-full flex items-center justify-center">
+                        <div className=" rounded-full flex items-center justify-center bg-cyan-600">
 
                             <Image src={company?.logo || job.company?.logo || ""} alt={company?.companyName.split(" ").slice(0, 2)
                                 .map(word => word[0])

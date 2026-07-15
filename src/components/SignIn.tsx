@@ -28,10 +28,6 @@ const roles = [
     key: "employer",
   },
   {
-    label: "Job Seeker Dashboard",
-    key: "jobSeekerDashboard",
-  },
-  {
     label: "Employer Dashboard",
     key: "employerDashboard",
   }
@@ -134,9 +130,19 @@ export default function SignInForm() {
   }, []);
 
   const loginAsRole = async (role: keyof typeof credentials) => {
-    console.log("Hus", role);
+   
+    
+  if (role === "employerDashboard") {
+   window.open(
+  "https://career-path-employer-dashboard.vercel.app",
+  "_blank"
+);
+    return;
+  }
+     
+
     const user = credentials[role];
-    console.log("Gur", user);
+   
 
     // await sigInUser({
     //   email: user.email,
@@ -313,7 +319,7 @@ export default function SignInForm() {
                 <section className=" flex justify-center">
                   <button
                     onClick={() => setOpen(true)}
-                    className="px-6 py-1 bg-green-700 text-white rounded-sm cursor-pointer hover:bg-green-600 transition"
+                    className="px-6 py-1 bg-gray-700 text-white rounded-sm cursor-pointer hover:bg-gray-600 transition"
                   >
                     Demo Login
                   </button>
