@@ -226,7 +226,8 @@ export default function UserProfileCard() {
                 </button>
               </>
             )}
-           <Link href={"#"}>Go To Dashboard</Link>
+            <Link className="border flex items-center border-gray-300 rounded-sm px-2" href={"https://career-path-employer-dashboard.vercel.app"}>Go To Dashboard</Link>
+
             
           </div>
         </div>
