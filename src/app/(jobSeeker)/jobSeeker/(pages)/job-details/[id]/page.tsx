@@ -21,7 +21,7 @@ export default function JobDetailspage() {
   const [newJobs, setJobs] = useState<any>([]);
 
   const { id } = useParams();
-  console.log("Check cirrent compajnt",currentCompany);
+
 
   const [allJobs, setAllJobs] = useState<Job[]>([]);
   const { data: jobs, isLoading: isAllJobsLoading } = useGetAllJobPostsQuery({
@@ -69,7 +69,7 @@ export default function JobDetailspage() {
         }));
 
         setJobs(formattedJobs);
-        console.log("Formatted Jobs:", formattedJobs);
+   
       });
   }, []);
 

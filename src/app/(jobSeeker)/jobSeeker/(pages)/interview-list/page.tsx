@@ -135,7 +135,7 @@ export default function InterviewSheduler() {
     return sorted;
   }, [interviews, sortConfig]);
 
-  console.log(info);
+
 
   return (
     <Container>
