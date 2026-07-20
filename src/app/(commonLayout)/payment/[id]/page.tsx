@@ -56,13 +56,13 @@ export default function Billing() {
     postalCode: "",
   });
 
-  console.log(paymentInfo);
+ 
 
   const handlePayment = (paymentInfo: PaymentInfoType) => {
     setPaymentInfo(paymentInfo);
-    console.log(userBillingInfo, paymentInfo, "Hr is user info");
+    
   };
-   console.log(userBillingInfo, paymentInfo, "Hr is user info");
+
 
   return (
     <div className="md:mx-3">

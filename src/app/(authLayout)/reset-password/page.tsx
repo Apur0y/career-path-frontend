@@ -29,18 +29,17 @@ const ResetPasswordForm: React.FC = () => {
   const [resetPasswordUser, { isLoading }] = useResetPasswordMutation();
 
   const onSubmit = async (data: PasswordFormData) => {
-    console.log("Submitted Password Data:", data);
     //  Call API to update password
     try {
       const response = await resetPasswordUser(data).unwrap();
-      console.log(response);
+
       if (response?.success) {
         toast.success(response?.message);
         router.push("/");
         reset();
       }
     } catch (error: any) {
-      console.log(error);
+      
       toast.error(error.data.message);
     }
   };
