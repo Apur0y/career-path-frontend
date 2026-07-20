@@ -45,12 +45,12 @@ export default function CertificationInformation({ setStep, formData, setFormDat
 
   const handleBack = (): void => {
     setStep(3);
-    console.log("Back");
+    
   };
 
   // On form submission, update the form data
   const onSubmit = (data: WorkForm) => {
-    console.log("Certification Data Submitted:", data);
+    
 
     // Update the formData with the current certificate data and any other existing data
     setFormData({

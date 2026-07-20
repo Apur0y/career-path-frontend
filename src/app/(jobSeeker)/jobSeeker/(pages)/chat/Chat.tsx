@@ -72,7 +72,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
   // 🔍 Extract user ID from JWT on mount
   useEffect(() => {
 
-    console.log("🔐 Access token found:", !!token);
+    
 
     if (!token) {
       console.error("❌ No access token found. Cannot authenticate.");
@@ -81,7 +81,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
 
     try {
       const decoded = jwtDecode<{ id: string; role: string }>(token);
-      console.log("✅ Token decoded successfully:", decoded);
+      
       setUserId(decoded.id);
     } catch (err) {
       console.error("❌ Failed to decode JWT token:", err);
@@ -91,7 +91,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
   // 🔌 Connect to WebSocket when userId is available
   useEffect(() => {
     if (!userId) {
-      console.log("⏳ Waiting for userId before connecting WebSocket...");
+      
       return;
     }
     if (!token) {
@@ -101,13 +101,13 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
 
     const socketUrl =
       process.env.NEXT_PUBLIC_VITE_WEBSOCKET_URL || "ws://localhost:5000";
-    console.log("🔌 Attempting to connect WebSocket to:", socketUrl);
+    
 
     const socket = new WebSocket(socketUrl);
 
     socket.onopen = () => {
-      console.log("🟢 WebSocket connected successfully");
-      console.log("📨 Sending authentication request...");
+      
+      
       socket.send(
         JSON.stringify({
           type: "authenticate",
@@ -117,14 +117,14 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
     };
 
     socket.onmessage = (event) => {
-      console.log("📬 Raw WebSocket message received:", event.data);
+      
 
       let data;
       try {
         data = JSON.parse(event.data);
 
       } catch (err: any) {
-        console.log(err);
+        
         console.error(
           "❌ Failed to parse WebSocket message as JSON:",
           event.data
@@ -135,13 +135,13 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
       switch (data.type) {
 
         case "authentication":
-          console.log("✅ Authentication successful:", data.message);
-          console.log("🚀 Fetching chat list...");
+          
+          
           fetchChatList();
           break;
 
         case "chat_list": {
-          console.log("📋 Received chat list:", data.chatList);
+          
 
           const users: ChatUser[] = data.chatList?.map((item: any) => {
             // Extract user information
@@ -164,14 +164,14 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
             };
           }) || [];
 
-          console.log("👥 Mapped chat users:", users);
+          
           setChatUsers(users);
           break;
         }
 
 
         case "chat_history": {
-          console.log("📖 Received chat history:", data.history);
+          
           setMessages(data.history || []);
 
           // Auto-mark incoming unread messages as read
@@ -180,7 +180,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
             .map((msg: Message) => msg.id);
 
           if (unreadIds && unreadIds.length > 0) {
-            console.log("📬 Marking messages as read:", unreadIds);
+            
             socket.send(
               JSON.stringify({
                 type: "message_read",
@@ -188,13 +188,13 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
               })
             );
           } else {
-            console.log("📭 No unread messages to mark as read.");
+            
           }
           break;
         }
 
         case "message": {
-          console.log("💬 Received new message:", data);
+          
           const exists = messages.some((m) => m.id === data.id);
           if (exists) {
             console.log(
@@ -202,12 +202,12 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
               data.id
             );
           } else {
-            console.log("📩 Adding new message to state");
+            
             setMessages((prev) => [...prev, data]);
 
             // Auto-mark as read if it's not from me
             if (data.senderId !== userId && !data.isRead) {
-              console.log("👁️ Sending 'message_read' for message:", data.id);
+              
               socket.send(
                 JSON.stringify({
                   type: "message_read",
@@ -234,7 +234,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
               );
 
               const timeoutId = setTimeout(() => {
-                console.log("⏱️ Clearing typing indicator for:", data.userId);
+                
                 setTypingUsers((innerPrev) =>
                   innerPrev.filter(
                     (t) =>
@@ -246,7 +246,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
                 );
               }, 3000);
 
-              console.log("🕒 Setting typing indicator with timeout");
+              
               return [
                 ...filtered,
                 { userId: data.userId, jobPostId: data.jobPostId, timeoutId },
@@ -256,7 +256,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
           break;
 
         case "stop_typing":
-          console.log("🛑 User stopped typing:", data.userId);
+          
           setTypingUsers((prev) =>
             prev.filter(
               (t) =>
@@ -266,7 +266,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
           break;
 
         case "user_online":
-          console.log("🟢 User went online:", data.userId);
+          
           setChatUsers((prev) =>
             prev.map((u) =>
               u.id === data.userId ? { ...u, isOnline: true } : u
@@ -275,7 +275,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
           break;
 
         case "user_offline":
-          console.log("🔴 User went offline:", data.userId);
+          
           setChatUsers((prev) =>
             prev.map((u) =>
               u.id === data.userId ? { ...u, isOnline: false } : u
@@ -305,9 +305,9 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
         reason: event.reason,
         wasClean: event.wasClean,
       });
-      console.log("🔁 Attempting to reconnect in 3 seconds...");
+      
       setTimeout(() => {
-        console.log("🔄 Reconnecting WebSocket...");
+        
         // Re-trigger effect by forcing reconnection attempt
         // Note: You can improve this with a reconnect queue later
       }, 3000);
@@ -320,7 +320,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
     setWs(socket);
 
     return () => {
-      console.log("🧹 Cleaning up WebSocket connection...");
+      
       if (
         socket.readyState === WebSocket.OPEN ||
         socket.readyState === WebSocket.CONNECTING
@@ -335,15 +335,15 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
 
   // 📌 Auto-scroll to bottom of messages
   useEffect(() => {
-    console.log("🔽 Scrolling to bottom of message list...");
+    
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
 
   // useEffect(() => {
-  //   console.log("In the targer", jobPostId)
+  //   
   //   if (ws && ws.readyState === WebSocket.OPEN) {
-  //     console.log("Under the jpa")
+  //     
   //     ws.send(
   //       JSON.stringify({
   //         type: "message",
@@ -359,15 +359,15 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setNewMessage(value);
-    console.log("✏️ Input changed:", value);
+    
 
     if (selectedChat && ws && ws.readyState === WebSocket.OPEN) {
       if (typingTimeoutRef.current) {
         clearTimeout(typingTimeoutRef.current);
-        console.log("🗑️ Cleared previous typing timeout");
+        
       }
 
-      console.log("📤 Sending 'typing' event to backend");
+      
       ws.send(
         JSON.stringify({
           type: "typing",
@@ -377,7 +377,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
       );
 
       typingTimeoutRef.current = setTimeout(() => {
-        console.log("🔚 Sending 'stop_typing' after 2s of inactivity");
+        
         ws.send(
           JSON.stringify({
             type: "stop_typing",
@@ -394,7 +394,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
   useEffect(() => {
     return () => {
       if (typingTimeoutRef.current) {
-        console.log("🧹 Cleanup: Clearing typing timeout on unmount");
+        
         clearTimeout(typingTimeoutRef.current);
       }
     };
@@ -407,7 +407,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
     const { roomId } = selectedChat;
 
     if (ws && ws.readyState === WebSocket.OPEN) {
-      console.log("📥 Fetching chat history for room:", roomId);
+      
       ws.send(
         JSON.stringify({
           type: "chat_history",
@@ -421,12 +421,12 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
 
   // 🧩 Handle chat selection
   const handleChatSelect = (user: ChatUser) => {
-    console.log("👉 Chat selected:", user);
+    
     setSelectedChat(user);
     setMessages([]);
     setTypingUsers([]);
 
-    console.log("user form chat histror", user)
+    
     if (ws && ws.readyState === WebSocket.OPEN) {
       console.log(
         "📥 Loading chat history for:",
@@ -470,7 +470,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
       message: newMessage.trim(),
     };
 
-    console.log("📤 Sending message:", messageData);
+    
     ws.send(JSON.stringify(messageData));
 
     // Optimistically add to UI
@@ -487,7 +487,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
       senderProfilePic: "",
     };
 
-    console.log("💡 Adding message to UI optimistically:", localMessage);
+    
     setMessages((prev) => [...prev, localMessage]);
     setNewMessage("");
   };
@@ -496,7 +496,7 @@ export default function ChatConversation({receviedId}: { receviedId: any }) {
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      console.log("↩️ Enter pressed — sending message");
+      
       handleSendMessage();
     }
   };

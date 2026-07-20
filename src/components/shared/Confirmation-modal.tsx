@@ -38,7 +38,7 @@ export function ConfirmationModal({
     onClose();
     setIsTrue(true);
   };
-  console.log(isTrue);
+  
 
   const handleCancel = () => {
     onClose();

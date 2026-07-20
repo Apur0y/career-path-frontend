@@ -183,8 +183,8 @@ export const FilterSidebar = ({ setFiltersData, isFilterSidebarVisible, setIsFil
 
       // const res= workType?.find((item: WorkMode) => item?.jobType === keywordQuery);
       //  const resDep = allDepartment?.find((item: Department) => item?.title === keywordQuery);
-      //  console.log("Res dipp",resDep)
-      //  console.log("Res WOrk",res)
+      //  
+      //  
       //     if( keywordQuery && res) {
 
       //       if(res) {
@@ -221,8 +221,8 @@ export const FilterSidebar = ({ setFiltersData, isFilterSidebarVisible, setIsFil
       //       }
       //     }
 
-      console.log(urlParams);
-      console.log("Search:", searchQuery, "Location:", locationQuery);
+      
+      
 
       // Update selectedDepartments based on the searchQuery
       if (searchQuery) {
@@ -282,7 +282,7 @@ export const FilterSidebar = ({ setFiltersData, isFilterSidebarVisible, setIsFil
       companyName: selectedCompanies,
       searchTerm: selectedSearchTerm
     };
-    console.log("Form Data printed:", formData);
+    
 
     // filterJobPostsTrigger(formData);
     const fetchData = async () => {

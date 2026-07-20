@@ -57,7 +57,7 @@ export default function UserProfileCard() {
       }
 
       const res = await updateProfile(formData);
-      console.log("Update Response:", res);
+      
 
       setUser({
         ...editData,

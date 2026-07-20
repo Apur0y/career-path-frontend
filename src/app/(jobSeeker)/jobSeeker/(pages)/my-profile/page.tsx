@@ -21,7 +21,7 @@ const ProfilePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
     const { data: myUser, refetch } = useGetMeQuery({});
 
-    console.log("Here is the use", myUser?.data.id);
+    
 
   // Fetch profile data when the component mounts
   useEffect(() => {
@@ -44,13 +44,13 @@ const ProfilePage: React.FC = () => {
 
         const data = await response.json();
 
-        console.log("Fetched Profile Data:", data);
+        
         if (!data || !data.data) {
           throw new Error("Invalid profile data format");
         }
 
         setProfileData(data.data);
-        console.log("Profile Data Printed From the Main Page: ", profileData);
+        
       } catch (error) {
         console.error("Error fetching profile data:", error);
       } finally {
@@ -81,7 +81,7 @@ const ProfilePage: React.FC = () => {
       }
 
       const data = await response.json();
-      console.log("Profile updated successfully:", data);
+      
     } catch (error) {
       console.error("Error updating profile:", error);
     }
@@ -128,7 +128,7 @@ const ProfilePage: React.FC = () => {
       }
 
       const data = await response.json();
-      console.log("Skills updated successfully:", data);
+      
     } catch (error) {
       console.error("Error updating skills:", error);
       // Optionally revert local state if update fails
@@ -161,7 +161,7 @@ const ProfilePage: React.FC = () => {
       if (!response.ok) throw new Error("Failed to update education");
 
       const data = await response.json();
-      console.log("Education updated successfully:", data);
+      
     } catch (error) {
       console.error("Error updating education:", error);
     }
@@ -191,7 +191,7 @@ const ProfilePage: React.FC = () => {
       if (!response.ok) throw new Error("Failed to update certifications");
 
       const data = await response.json();
-      console.log("Certifications updated successfully:", data);
+      
     } catch (error) {
       console.error("Error updating certifications:", error);
     }
@@ -222,7 +222,7 @@ const ProfilePage: React.FC = () => {
       if (!response.ok) throw new Error("Failed to update social media");
 
       const data = await response.json();
-      console.log("Social media updated successfully:", data);
+      
     } catch (error) {
       console.error("Error updating social media:", error);
     }

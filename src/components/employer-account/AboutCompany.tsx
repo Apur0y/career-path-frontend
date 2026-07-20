@@ -97,7 +97,7 @@ function AboutCompany() {
             navigate.push("/logo-contact");
             //     }
             // } catch (error) {
-            //     console.log(error);
+            //     
             // }
         }
     };

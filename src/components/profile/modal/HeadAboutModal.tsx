@@ -33,7 +33,7 @@ const HeadAboutModal = ({
 }: any) => {
 
 
-console.log("bkck",profileData);
+
 
   const { register, handleSubmit, reset } = useForm<FormData>({
     defaultValues: {
@@ -66,14 +66,14 @@ console.log("bkck",profileData);
   });
 }, [profileData, reset]);
   // const onSubmit: SubmitHandler<FormData> = (data) => {
-  //   console.log(data);
+  //   
   //   setIsModalOpen(false); // Close modal after submission
   //   reset(data); // Update default values with submitted data
   // };
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
-      console.log("Updated DataA: ", data);
+      
 
       const updatedData = {
         firstName: data?.firstName,
@@ -102,7 +102,7 @@ console.log("bkck",profileData);
       }
 
       // const updatedData = await response.json();
-      console.log("Profile updated successfully:", updatedData);
+      
 
       // Close the modal and reset form after submission
       setIsModalOpen(false);

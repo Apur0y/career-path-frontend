@@ -25,13 +25,13 @@ export default function   CareerOverview({setStep,formData,setFormData}: IPerson
 const dispatch=useDispatch()
   const handleBack = (): void => {
     setStep(1);
-    console.log("Back")
+    
   };
   //  const data = useSelector(state => state.allResumeData.resumeData);
 
-  // console.log(data)
+  // 
   const onSubmit = (data: CareerFormData): void => {
-    console.log(data, " Tour career here");
+    
     setStep(3);
     setFormData(data)
 

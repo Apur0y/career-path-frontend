@@ -7,8 +7,8 @@ import React from 'react'
 export default function SavedJobs() {
   const { data: jobs } = useGetAllJobPostsQuery({})
   const { data: savedJobs } = useGetSavedJobsQuery({})
-  console.log("saved jobs here", savedJobs?.data)
-  console.log("All nob heree", jobs?.data.data)
+  
+  
 
 
 

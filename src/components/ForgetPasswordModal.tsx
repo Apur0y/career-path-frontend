@@ -30,17 +30,17 @@ const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({
   const [forgetPassPost, { isLoading }] = useForgetPasswordMutation();
 
   const onSubmit = async (data: FormData) => {
-    console.log("Email submitted:", data);
+    
     try {
       const response = await forgetPassPost(data).unwrap();
-      console.log(response);
+      
       if (response?.success) {
         toast.success(response?.message);
         reset();
         setModalOpen(false);
       }
     } catch (error: any) {
-      // console.log(error, "yes");
+      // 
       toast.error(error.data.message);
     }
   };
@@ -52,7 +52,7 @@ const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({
             <div>
               <button className="cursor-pointer p-3 flex items-center gap-1 hover:underline" onClick={() => {
                 setModalOpen(true)
-                console.log("dora")
+                
               }
               }>
                 <MdArrowBackIosNew />Back</button>

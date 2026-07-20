@@ -32,7 +32,7 @@ export default function PersonalInformation({ setStep, formData, setFormData }: 
 
 
   const onSubmit = (data: PersonalInfoType) => {
-    console.log(data, "Got the personal info");
+    
     setFormData(data)
     setStep(2);
   };

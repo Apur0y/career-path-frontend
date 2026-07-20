@@ -50,7 +50,7 @@ export default function SkillsExperience({ setStep, formData, setFormData }: IPe
   const [newLanguage, setNewLanguage] = useState("");
 
 
-  console.log("Skill experience",formData)
+  
 
   const addSkill = () => {
     const skill = newSkill.trim();
@@ -85,7 +85,7 @@ export default function SkillsExperience({ setStep, formData, setFormData }: IPe
 
   const handleBack = (): void => {
     setStep(2);
-    console.log("Back");
+    
   };
 
   const onSubmit = (data: WorkForm) => {
@@ -103,7 +103,7 @@ export default function SkillsExperience({ setStep, formData, setFormData }: IPe
     setFormData(updatedData); // Updating form data to include skills and languages
     // router.push("/jobseekeruser/education");
   };
-  console.log("New fields",fields)
+  
 
   return (
     <div className="flex justify-center mt-12">

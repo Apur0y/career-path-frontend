@@ -23,7 +23,7 @@ const SocialLinksAddModal: React.FC<SocailContactModal> = ({
   });
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data);
+    
     setIsModalOpen(false); // Close modal after submission
     reset(data); // Update default values with submitted data
   };

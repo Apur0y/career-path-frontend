@@ -21,7 +21,7 @@ export default function GenerateResume({
 
   const handleBack = (): void => {
     setStep(5);
-    console.log("Back")
+    
   };
 
   const simulateLoading = () => {

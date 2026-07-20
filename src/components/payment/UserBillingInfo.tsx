@@ -20,10 +20,10 @@ export default function UserBillingInfo({
   const { register, handleSubmit } = useForm<UserBillingType>();
 
   const {data:user}=useGetMeQuery({});
-  console.log(user?.data)
+  
 
   const onSubmit = (data: UserBillingType) => {
-    console.log("first", data);
+    
   };
 
   const handleInputChange = (field: string, value: string) => {

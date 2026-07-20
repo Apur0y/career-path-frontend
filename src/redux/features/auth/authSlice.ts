@@ -21,7 +21,7 @@ const authSlice = createSlice({
       });
     },
     logOut: (state) => {
-      console.log("🚪 LOGOUT ACTION TRIGGERED - Clearing auth state");
+      
       console.trace("🔍 Logout called from:");
       state.user = null;
       state.token = null;

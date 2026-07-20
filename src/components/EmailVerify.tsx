@@ -28,7 +28,7 @@ export default function EmailVerificationPage() {
     try {
 
       const res =await resendLink({email:userEmail});
-      console.log(res)
+      
       // Simulate API call to resend verification email
       await new Promise(resolve => setTimeout(resolve, 1500));
       

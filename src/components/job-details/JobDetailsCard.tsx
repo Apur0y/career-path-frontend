@@ -26,7 +26,7 @@ type JobDetailsCardProps = {
 };
 
 const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ currentCompany }) => {
-  console.log("Check in details", currentCompany);
+  
   const company = currentCompany?.company;
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -110,9 +110,9 @@ const JobDetailsCard: React.FC<JobDetailsCardProps> = ({ currentCompany }) => {
     }
     refetch();
     jobFetch();
-    console.log("Appicatons is here", currentCompany);
+    
   }, [savedJobs?.data, currentCompany, isSave, appliedJobs?.data]);
-  console.log(applied);
+  
 
   return currentCompany?.url ? (
    <>

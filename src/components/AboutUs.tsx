@@ -10,7 +10,7 @@ export default function AboutUs() {
 
   const token = async () => {
     const res = await refresh({});
-    console.log(res);
+    
   };
 
   // token();

@@ -73,7 +73,7 @@ export const clearTokens = () => {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("refreshToken");
 
-  console.log("🧹 All tokens cleared from cookies and localStorage");
+  
 };
 
 /**

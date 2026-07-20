@@ -23,7 +23,7 @@ export default function MyResume({ userId }: { userId: string | null }) {
   //     return;
   //   }
 
-  //   console.log(element);
+  //   
 
   //   const canvas = await html2canvas(element, {
   //     scale: 2,
@@ -129,11 +129,11 @@ export default function MyResume({ userId }: { userId: string | null }) {
           throw new Error("Failed to fetch user profile");
         }
         const data = await response.json();
-        console.log("Fetched User Profile Data:", data);
+        
         if (!data.success) {
           throw new Error(data.message || "Failed to fetch user profile");
         }
-        console.log("User Profile Data:", data);
+        
         setProfileData(data.data || {});
         setIsLoading(false);
       } catch (error) {

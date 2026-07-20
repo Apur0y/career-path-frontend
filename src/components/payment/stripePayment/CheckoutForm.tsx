@@ -67,7 +67,7 @@ function PaymentForm({
 
   const clientSecretId = subData?.clientSecret;
   const paymentIntentId = subData?.paymentIntentId;
-  console.log(clientSecretId, paymentIntentId);
+  
 
   const onSubmit = async (data: FormData) => {
     if (!stripe || !elements) {
@@ -108,7 +108,7 @@ function PaymentForm({
         });
 
       const { id }: any = paymentMethod;
-      console.log("pm ==", id);
+      
 
       if (stripeError) {
         toast.error(stripeError.message || "Payment failed");
@@ -131,15 +131,15 @@ function PaymentForm({
         }
       );
 
-      console.log("Payment Confirmed:", confirmRes.data);
+      
       const res = await createBilling(userBillingInfo)
-      console.log(res)
+      
       toast.success("Payment successful!");
       reset();
       setPaymentProcessing(false);
       router.push("/signIn");
     } catch (err) {
-      console.log(err);
+      
       toast.error("Failed to process payment. Please try again.");
       setPaymentProcessing(false);
     }

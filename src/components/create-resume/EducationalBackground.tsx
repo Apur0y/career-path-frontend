@@ -56,13 +56,13 @@ export default function EducationalBackground({ setStep, formData, setFormData, 
 
   const handleBack = (): void => {
     setStep(3);
-    console.log("Back")
+    
   };
 
 
 
   const onSubmit = (data: EducationFormData) => {
-    console.log("Educational Data Submitted:", data);
+    
     setStep(5)
     setFormData(data);
     // router.push("/jobseekeruser/contactInfo");

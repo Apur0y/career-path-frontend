@@ -9,7 +9,7 @@ interface FormData {
   aboutMe: string;
 }
 const AboutSection = ({ profileData, setProfileData }: any) => {
-  console.log("Profile Data:", profileData);
+  
 
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -31,12 +31,12 @@ const AboutSection = ({ profileData, setProfileData }: any) => {
 
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    // console.log(data);
+    // 
     // setIsModalOpen(false); // Close modal after submission
     // reset(data); // Update default values with submitted data
 
     try {
-      console.log("Updated DataA: ", data);
+      
 
       const updatedData = {
         JobTitle: data?.JobTitle,
@@ -57,7 +57,7 @@ const AboutSection = ({ profileData, setProfileData }: any) => {
       }
 
       // const updatedData = await response.json();
-      console.log("Job Details updated successfully:", updatedData);
+      
 
       // Close the modal and reset form after submission
       setIsModalOpen(false);

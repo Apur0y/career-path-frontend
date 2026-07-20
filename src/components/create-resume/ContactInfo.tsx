@@ -61,11 +61,11 @@ export default function ContactInfo({ setStep, formData, setFormData }: IPersona
 
   const handleBack = (): void => {
     setStep(4);
-    console.log("Back")
+    
   };
 
   const onSubmit = (data: any) => {
-    console.log(data, "Got the personal info");
+    
     setStep(6)
     setFormData(data)
     // router.push("/jobseekeruser/aimagic");

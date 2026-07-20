@@ -35,7 +35,7 @@ const CertificationAddModal: React.FC<CertificationAddModal> = ({
 
 
     const onSubmit: SubmitHandler<FormData> = (data) => {
-        console.log("Certification Name: ", data);
+        
 
         const newCertification = {
             certification_name: data.certification_name,

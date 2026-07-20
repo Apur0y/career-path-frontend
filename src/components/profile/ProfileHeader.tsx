@@ -31,7 +31,7 @@ const ProfileHeade = ({ profileData, setProfileData }: any) => {
 
 
     const res = await updatePic(formData);
-    console.log(res)
+    
   }
 
 

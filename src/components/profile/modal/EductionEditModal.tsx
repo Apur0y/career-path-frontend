@@ -12,11 +12,11 @@ export const EductionEditModal = ({
 }: any) => {
 
   if (education) {
-    console.log("Education: ", education);
+    
   }
 
   if (certification) {
-    console.log("Certification: ", certification);
+    
   }
 
 

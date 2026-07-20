@@ -43,7 +43,7 @@ export const debugTokenInfo = (): void => {
   try {
     const token = Cookies.get("accessToken");
     if (!token) {
-      console.log("No access token found");
+      
       return;
     }
     

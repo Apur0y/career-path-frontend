@@ -160,7 +160,7 @@ function LogoContact() {
                 }
 
                 const res = await updateCompany(formDataToSend).unwrap();
-                console.log('Success:', res);
+                
                 if (res.success) {
                     toast.success("Your Company has Successfully Created!");
                     router.push("/success-account");

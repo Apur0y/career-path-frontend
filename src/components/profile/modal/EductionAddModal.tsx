@@ -37,7 +37,7 @@ const EductionAddModal: React.FC<EductionAddModal> = ({
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
 
-    console.log("Education Name: ", data);
+    
 
     const newEducation = {
       degree: data?.degree,
@@ -47,7 +47,7 @@ const EductionAddModal: React.FC<EductionAddModal> = ({
 
     onAddEducation(newEducation);
 
-    console.log(data);
+    
     setIsModalOpen(false); // Close modal after submission
     reset(data); // Update default values with submitted data
   };

@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 
 export default function JobList({ filtersData }: any) {
 
-    console.log(filtersData)
+    
 
     const [jobs, setJobs] = useState([]);
     const pathname = usePathname()

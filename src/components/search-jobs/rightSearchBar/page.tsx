@@ -38,7 +38,7 @@ export default function SerachRightSideBar() {
                           <p><Skeleton height={100} width={440} /></p>
                       </div>)
                           }</div> 
-  console.log(companies)
+  
 
 
 

@@ -41,11 +41,11 @@ const PlanSummaryCard: React.FC<PlanSummaryProps> = ({
   }
 
   const accessToken = Cookies.get("accessToken");
-  console.log(accessToken);
+  
 
-  console.log("aaa== ", accessToken);
+  
   const planDetails = data?.data;
-  console.log(planDetails);
+  
 
   // payment submit
   const handlePayment = async () => {
@@ -56,14 +56,14 @@ const PlanSummaryCard: React.FC<PlanSummaryProps> = ({
         planIdData,
         accessToken,
       }).unwrap();
-      console.log(response);
+      
       if (response?.success) {
         toast.success(response?.message);
         router.push(`/payment/${id}`);
         dispatch(setSubscriptionData(response.data));
       }
     } catch (error: any) {
-      console.log(error);
+      
       toast.error(error?.data.message);
     }
   };

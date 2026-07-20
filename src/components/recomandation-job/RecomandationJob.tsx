@@ -32,7 +32,7 @@ export default function RecomandationJob({ title }: JobTitle) {
 
   const { data: myProfile } = useGetMyProfileQuery(currentUser?.data?.id);
   const profileId = myProfile?.data?.profileId;
-  console.log(profileId);
+  
   const [recomandationJobs, setRecomandationJobs] = useState<any>(null);
   useEffect(() => {
     if (!myProfile?.data?.profileId) return;
@@ -70,13 +70,13 @@ export default function RecomandationJob({ title }: JobTitle) {
   //   const { data: recomandationJobs } = useRecomandationJobsQuery(profileId, {
   //     skip: !profileId,
   //   });
-  //   console.log(recomandationJobs);
+  //   
   const [jobLoading, setJobLoading] = useState(true);
-  // console.log("Current User: ", currentUser?.data?.id);
-  // console.log("My Profile: ", myProfile?.data);
-  // console.log("Profile ID: ", myProfile?.data?.profileId)
+  // 
+  // 
+  // 
 
-  // console.log("Recomandation Jobs: ", recomandationJobs)
+  // 
 
   // useEffect(() => {
 
@@ -97,7 +97,7 @@ export default function RecomandationJob({ title }: JobTitle) {
   //                     },
   //                 }
   //             );
-  //             console.log("Response: ", response.data.recommendations);
+  //             
   //         } catch (error) {
   //             console.error("Error fetching recommended jobs:", error);
   //         }
@@ -111,9 +111,9 @@ export default function RecomandationJob({ title }: JobTitle) {
   //     // }, [jobs?.data])
   // }, [jobs?.data, recomandationJobs?.data, myProfile?.data?.profileId])
 
-  console.log(recomandationJobs);
-  console.log("ddd");
-  console.log(myProfile?.data?.profileId);
+  
+  
+  
 
   useEffect(() => {
     if (currentUser?.data?.role != "JOB_SEEKER") return;

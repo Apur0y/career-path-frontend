@@ -38,7 +38,7 @@ export default function RecentJob({ title }: JobTitle) {
     { skip: false }
   );
   const pathname=usePathname()
-  console.log(pathname)
+  
 
   // Fetch recommended jobs via direct API call (since RTK Query not used for this endpoint)
   useEffect(() => {

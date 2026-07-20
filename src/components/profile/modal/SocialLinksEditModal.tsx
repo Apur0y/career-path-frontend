@@ -123,7 +123,7 @@ export const SocialLinksEditModal: React.FC<SocialLinksEditModalProps> = ({
 //   });
 
 //   const onSubmit: SubmitHandler<FormData> = (data) => {
-//     console.log(data);
+//     
 //     setIsModalOpenEdit(false); // Close modal after submission
 //     reset(data); // Update default values with submitted data
 //   };

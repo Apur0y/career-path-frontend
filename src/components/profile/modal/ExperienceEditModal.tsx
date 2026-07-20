@@ -26,8 +26,8 @@ const ExperienceEditModal = ({
   handleUpdateExperience,
 }: any) => {
 
-  console.log("Selected Experiange Data: ", selectedExperience)
-  console.log("Profile Data from the Experience Edit Modal: ", profileData)
+  
+  
 
   // Helper function to format date to "yyyy-MM-dd"
   const formatDate = (date: string) => {
@@ -72,7 +72,7 @@ const ExperienceEditModal = ({
       job_description: selectedExperience?.job_description
     }
     const updatedExperience = { ...newUpdatedExperience, ...data };
-    console.log("Updated Experience Data: ", updatedExperience);
+    
     handleUpdateExperience(updatedExperience); // Pass the updated experience back to the parent
     setIsModalOpenEdit(false); // Close the modal after updating
   };
@@ -80,7 +80,7 @@ const ExperienceEditModal = ({
 
   // const onSubmit: SubmitHandler<FormData> = async (data) => {
   //   try {
-  //     console.log("Experience Updated Data: ", data);
+  //     
 
   //     const updatedData = {
   //       jobTitle: data?.jobTitle,
@@ -104,7 +104,7 @@ const ExperienceEditModal = ({
   //     // }
 
   //     // const updatedData = await response.json();
-  //     console.log("Profile updated successfully:", updatedData);
+  //     
 
   //     // Close the modal and reset form after submission
   //     setIsModalOpenEdit(false);

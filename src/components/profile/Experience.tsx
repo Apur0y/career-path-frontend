@@ -49,7 +49,7 @@ const ExperienceSection = ({
   // Handle the update of the experience
   // const handleUpdateExperience = (updatedExperience: any) => {
 
-  //   console.log("Updated Data from Experience Page: ", updatedExperience)
+  //   
 
   //   // Update the jobExperience array in profileData
   //   setProfileData((prevData: any) => ({
@@ -75,7 +75,7 @@ const ExperienceSection = ({
 
   //   // });
 
-  //   console.log("Final full data after experiange updated: ", profileData);
+  //   
   //   return updatedProfile; // Return the updated profile data
   // };
 
@@ -108,7 +108,7 @@ const ExperienceSection = ({
 
       const { id, userId, User, profileId, ...profileWithoutId } = updatedProfileData;
 
-      console.log("Profile Data Without id: ", profileWithoutId);
+      
 
       const response = await fetch(`https://career-path-server-tau.vercel.app/api/v1/profiles/resume/${updatedProfileData?.User?.id}`, {
         method: "PATCH",
@@ -124,7 +124,7 @@ const ExperienceSection = ({
       }
 
       const data = await response.json();
-      console.log("Profile updated successfully:", data);
+      
     } catch (error) {
       console.error("Error updating profile:", error);
     }

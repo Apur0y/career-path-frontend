@@ -33,11 +33,11 @@ export default function CourseSection() {
   // ];
 
   // const { data: course } = useGetRecommandedCourseQuery({ limit: 10 });
-  // console.log(course);
+  // 
   const { data: currentUser } = useGetMeQuery({});
   const { data: myProfile } = useGetMyProfileQuery(currentUser?.data?.id);
   const profileId = myProfile?.data?.profileId;
-  console.log(profileId);
+  
   const [course, setCourse] = useState<any>(null);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function CourseSection() {
     fetchData();
   }, [myProfile?.data?.profileId]);
 
-  console.log(course);
+  
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">

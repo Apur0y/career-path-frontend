@@ -17,7 +17,7 @@ export default function RecentUploadedPost() {
     }, [jobs?.data])
 
 
-    console.log(allJobs);
+    
     return (
 
 

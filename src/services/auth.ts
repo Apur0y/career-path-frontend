@@ -17,7 +17,7 @@ export const loginUser = async (userData: {
 
     // ✅ Backend now sets HTTP-only cookies automatically
     // No need to manually set cookies here
-    console.log("✅ Login response received, HTTP-only cookies set by backend");
+    
 
     return result;
   } catch (err: any) {
@@ -52,10 +52,10 @@ export const getNewToken = async () => {
 
     const result = await res.json();
 
-    console.log("🔄 Refresh result:", result);
+    
 
     if (result?.success) {
-      console.log("✅ Token refreshed successfully");
+      
       console.log(
         "🔄 New tokens automatically set via HTTP-only cookies by backend"
       );

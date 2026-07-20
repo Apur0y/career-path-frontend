@@ -26,9 +26,9 @@ export const useTokenRefresh = () => {
 
         // If token will expire soon or is expired, refresh it
         if (decodedToken.exp < currentTime + expiryBuffer) {
-          console.log("🔄 Token expiring soon, auto-refreshing...");
+          
 
-          console.log("📤 Sending refresh request via HTTP-only cookies...");
+          
 
           const response = await fetch(
             "https://career-path-server-tau.vercel.app/api/v1/auth/refresh-token",
@@ -45,7 +45,7 @@ export const useTokenRefresh = () => {
             const data = await response.json();
 
             if (data?.success && data?.data?.accessToken) {
-              console.log("✅ Token auto-refreshed successfully");
+              
               console.log(
                 "🔄 New tokens automatically set via HTTP-only cookies by backend"
               );
@@ -58,11 +58,11 @@ export const useTokenRefresh = () => {
                 })
               );
             } else {
-              console.log("❌ Auto-refresh failed, logging out");
+              
               dispatch(logOut());
             }
           } else {
-            console.log("❌ Auto-refresh request failed, logging out");
+            
             dispatch(logOut());
           }
         }
@@ -70,7 +70,7 @@ export const useTokenRefresh = () => {
         console.error("❌ Error during token check:", error);
 
         // Don't immediately logout on decode errors, try refresh first
-        console.log("🔄 Attempting refresh due to token decode error...");
+        
 
         try {
           const response = await fetch(
@@ -91,7 +91,7 @@ export const useTokenRefresh = () => {
               dispatch(
                 setUser({ user: newUser, token: data.data.accessToken })
               );
-              console.log("✅ Recovered from token error via refresh");
+              
               return;
             }
           }
@@ -100,7 +100,7 @@ export const useTokenRefresh = () => {
         }
 
         // Only logout if refresh also fails
-        console.log("❌ All recovery attempts failed, logging out");
+        
         dispatch(logOut());
       }
     };
